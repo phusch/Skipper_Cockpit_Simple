@@ -1,0 +1,23 @@
+{
+  "name": "Friesland Skipper Cockpit Simple",
+  "short_name": "Skipper Simple",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f2f8f7",
+  "theme_color": "#0b7285",
+  "description": "Friesland Skipper Cockpit Simple V1.0.0 Test – vereinfachte Bedienoberfläche auf der bewährten Skipper-Cockpit-Logik",
+  "icons": [
+    {
+      "src": "assets/icons/skippercockpit-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/icons/skippercockpit-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

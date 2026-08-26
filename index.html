@@ -1,0 +1,445 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b7285"><title>Friesland Skipper Cockpit Simple V1.0.0 Test</title><meta name="description" content="Friesland Skipper Cockpit Simple – vereinfachte Bedienoberfläche auf bewährter Skipper-Cockpit-Logik"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/icons/skippercockpit-192.png"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="assets/app.css?v=1.0.0-test"><link rel="stylesheet" href="assets/simple-ui.css?v=1.0.0-test"><style id="v0141-critical">
+.topDayBar,.daypicker{display:none!important}
+</style></head>
+<body><div class="shell"><header class="topbar"><div class="brand"><img src="assets/schiffsschraube-gold.gif?v=1.0.0-test" alt="Goldene Schiffsschraube"><div><h1>FRIESLAND</h1><span>SKIPPER COCKPIT SIMPLE</span></div></div><div class="statusbar"><div class="statusitem headerDayPicker" id="headerDayPicker">
+  <div class="statusicon">📅</div>
+  <button class="headerDayCurrent" id="headerDayCurrent" type="button" aria-label="Fahrtag wählen">
+    <small>Fahrtag</small>
+    <strong id="headerDayLabel">Tag 1 · Sneek</strong>
+    <span id="topDay" class="compatTopDay">1 / 7</span>
+  </button>
+  <div class="headerDayMenu" id="headerDayMenu" hidden>
+    <button data-header-day="1">Tag 1 <span>Sneek</span></button>
+    <button data-header-day="2">Tag 2 <span>Gaastmaar</span></button>
+    <button data-header-day="3">Tag 3 <span>Workum</span></button>
+    <button data-header-day="4">Tag 4 <span>SN15</span></button>
+    <button data-header-day="5">Tag 5 <span>Marchjepolle</span></button>
+    <button data-header-day="6">Tag 6 <span>Giethoorn</span></button>
+    <button data-header-day="7">Tag 7 <span>Sloten</span></button>
+  </div>
+</div><div class="statusitem"><div class="statusicon">🌤️</div><div><small>Wetter</small><strong id="topWeather">—</strong></div></div><div class="statusitem"><div class="statusicon">💨</div><div><small>Wind</small><strong id="topWind">—</strong></div></div><div class="statusitem"><div class="statusicon">🕒</div><div><small>Fahrzeit</small><strong id="topTime">—</strong></div></div><div class="statusitem"><div class="statusicon">〰️</div><div><small>Distanz</small><strong id="topKm">—</strong></div></div></div><div class="versionBadge">V1.0.0 TEST</div><button class="menuBtn" aria-label="Menü">☰</button></header><div class="topDayBar"><span>FAHRTAG</span><div class="topDayButtons">
+<button data-top-day="1" class="topDayBtn active">Tag 1</button><button data-top-day="2" class="topDayBtn">Tag 2</button>
+<button data-top-day="3" class="topDayBtn">Tag 3</button><button data-top-day="4" class="topDayBtn">Tag 4</button>
+<button data-top-day="5" class="topDayBtn">Tag 5</button><button data-top-day="6" class="topDayBtn">Tag 6</button>
+<button data-top-day="7" class="topDayBtn">Tag 7</button></div></div>
+<aside class="sidebar"><button class="navbtn active" data-screen="cockpit" aria-label="Cockpit" title="Cockpit"><span class="ico">⌂</span><span class="navlabel">COCKPIT</span></button><button class="navbtn" data-screen="tagesplan" aria-label="Tagesplan" title="Tagesplan"><span class="ico">▣</span><span class="navlabel">TAGESPLAN</span></button><button class="navbtn" data-screen="runner" aria-label="Runner" title="Runner"><span class="ico">🏃</span><span class="navlabel">RUNNER</span></button><button class="navbtn" data-screen="weather" aria-label="Wetter" title="Wetter"><span class="ico">🌦️</span><span class="navlabel">WETTER</span></button><button class="navbtn" data-screen="waterkaarten" aria-label="Waterkaarten" title="Waterkaarten"><span class="ico">🗺️</span><span class="navlabel">WATERKAARTEN</span></button><button class="navbtn" data-screen="nautik" aria-label="Nautik" title="Nautik"><span class="ico">🌉</span><span class="navlabel">NAUTIK</span></button><button class="navbtn" data-screen="landgang" aria-label="Landgang" title="Landgang"><span class="ico">⚓</span><span class="navlabel">LANDGANG</span></button><button class="navbtn" data-screen="nacht" aria-label="Nachtplätze" title="Nachtplätze"><span class="ico">🛏️</span><span class="navlabel">NACHTPLÄTZE</span></button><button class="navbtn" data-screen="bunkern" aria-label="Bunkern" title="Bunkern"><span class="ico">☑</span><span class="navlabel">BUNKERN</span></button><button class="navbtn" data-screen="help" aria-label="Hilfe" title="Hilfe"><span class="ico">❔</span><span class="navlabel">HILFE</span></button><button class="navbtn" data-screen="settings" aria-label="Einstellungen" title="Einstellungen"><span class="ico">⚙️</span><span class="navlabel">EINSTELLUNGEN</span></button><div class="daypicker"><label for="daySelect">Tag wählen</label><select id="daySelect"><option value="1">Tag 1 · Sneek</option>
+<option value="2">Tag 2 · Gaastmaar</option>
+<option value="3">Tag 3 · Workum</option>
+<option value="4">Tag 4 · SN15</option>
+<option value="5">Tag 5 · Marchjepolle</option>
+<option value="6">Tag 6 · Giethoorn</option>
+<option value="7">Tag 7 · Sloten</option></select></div></aside>
+<main class="content"><section class="screen" id="screen-cockpit"><div class="headrow"><div><div class="kicker" id="dayKicker">TAG 1</div><h2 class="routeTitle" id="routeTitle">—</h2><p class="subtitle" id="subtitle">—</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end"><span class="chip aqua" id="routeStatusChip">ORIGINAL-GPX AKTIV</span></div></div>
+<section class="routeManager" aria-labelledby="routeManagerTitle"><div><small id="routeManagerTitle">ROUTE FÜR DIESEN FAHRTAG</small><strong id="routeManagerStatus">Originalroute ausgewählt</strong><span id="routeImportStatus">Die freigegebene Originalroute bleibt unverändert erhalten.</span></div><div class="routeChoice" role="group" aria-label="Aktive Tagesroute"><button type="button" id="routeOriginalBtn" class="active">ORIGINALROUTE</button><button type="button" id="routeAlternativeBtn" disabled>WATERKAARTEN-ALTERNATIVE</button></div><div class="routeManagerActions"><label class="miniBtn routeImportLabel" for="routeGpxInput">⇧ GPX-ALTERNATIVE IMPORTIEREN</label><input id="routeGpxInput" type="file" accept=".gpx,application/gpx+xml,application/xml,text/xml" hidden><button type="button" id="deleteAlternativeRoute" class="miniBtn danger" hidden>ALTERNATIVE LÖSCHEN</button></div></section>
+<div class="mapcard"><div class="mapLegend"><div><span class="line"></span> GPX-Fahrroute</div><div>➤ Fahrtrichtung</div><div>🚩 Start</div><div>🏁 Ziel</div><div>🏘️ Ort</div><div>⛵ See / Meer</div><div>🌬️ Windmühle</div></div><div id="map1" class="map daymap" ></div>
+<div id="map2" class="map daymap" hidden></div>
+<div id="map3" class="map daymap" hidden></div>
+<div id="map4" class="map daymap" hidden></div>
+<div id="map5" class="map daymap" hidden></div>
+<div id="map6" class="map daymap" hidden></div>
+<div id="map7" class="map daymap" hidden></div><div class="mapFoot"><span id="gpxFile">GPX</span><span>Realer Streckenverlauf · Kartenbasis OpenStreetMap</span></div></div>
+<div class="decision" id="decisionWeather" hidden><h3>⚠️ Tag 2 · Wetterentscheidung IJsselmeer</h3><p>Plan A nur bei passenden Bedingungen. Ist das IJsselmeer nicht sinnvoll fahrbar, bleibt ihr binnen und nutzt die vorbereitete Ausweichlogik.</p><div class="choiceRow"><button class="choice"><strong>PLAN A · IJSSELMEER</strong><span>Gaastmaar → Stavoren → Hindeloopen → Workum</span></button><button class="choice"><strong>PLAN B · BINNEN</strong><span>Geschützte Alternative – kein Zwang aufs IJsselmeer.</span></button></div></div>
+<div class="decision" id="decisionTime" hidden><h3>⏱️ Tag 3 · E‑Scooter-Zeitentscheidung</h3><p>Rechtzeitig zurück in Workum: Fahrt über IJlst und Sneek bis SN15. Bei später Rückkehr wird auf eine kürzere vorbereitete Variante gewechselt.</p><div class="choiceRow"><button class="choice active"><strong>RECHTZEITIG · SN15</strong><span>Workum → IJlst → Sneek → Sneekermeer → SN15</span></button><button class="choice"><strong>SPÄT · KURZVARIANTE</strong><span>Keine Hektik – Ziel flexibel verkürzen.</span></button></div></div>
+<div class="skipperBrief">
+  <div class="briefBadge" id="briefCharacter">TAGESBRIEF</div>
+  <div class="briefMain"><small>SKIPPERBRIEF · WAS KOMMT HEUTE AUF UNS ZU?</small><strong id="briefSummary">—</strong><div id="briefFocus" class="briefFocus"></div></div>
+  <div class="briefReserve"><small>RESERVE / TAKTIK</small><strong id="briefReserve">—</strong></div>
+</div>
+<div class="weatherStrip" id="weatherStrip">
+  <div class="weatherNow">
+    <div class="weatherGlyph" id="weatherGlyph">🌦️</div>
+    <div><small>WETTER AM AKTUELLEN FAHRTAG</small><strong id="weatherSummary">Noch nicht geladen</strong><span id="weatherLocation">Route</span></div>
+  </div>
+  <div class="weatherStat"><small>TEMP.</small><strong id="weatherTemp">—</strong></div>
+  <div class="weatherStat"><small>WIND</small><strong id="weatherWind">—</strong></div>
+  <div class="weatherStat"><small>BÖEN</small><strong id="weatherGust">—</strong></div>
+  <div class="weatherStat"><small>REGEN</small><strong id="weatherRain">—</strong></div>
+  <button class="weatherRefresh" id="weatherRefresh" type="button">AKTUALISIEREN</button>
+</div>
+<section class="alternativeBasis" id="alternativeBasis" hidden><div class="basisHead"><div><small>AUTOMATISCHE ROUTENBASIS · WATERKAARTEN-ALTERNATIVE</small><strong id="basisRouteName">—</strong><span id="basisStatus">Basisinformationen werden vorbereitet.</span></div><div class="basisActions"><button type="button" class="miniBtn secondary" id="refreshAlternativeBasis">↻ BASISDATEN</button><button type="button" class="miniBtn" id="exportRouteAnalysis">⇩ ANALYSEPAKET</button><label class="miniBtn routeInfoImportLabel" for="routeInfoInput">⇧ ROUTENINFOS</label><input id="routeInfoInput" type="file" accept=".json,application/json" hidden><button type="button" class="miniBtn danger" id="removeRouteInfo" hidden>INFOS ENTFERNEN</button></div></div><div class="routeInfoStatus" id="routeInfoStatus">Noch keine von ChatGPT erstellten Routeninformationen importiert.</div><div class="basisFacts"><div><small>START</small><strong id="basisStart">—</strong><span id="basisStartCoords">—</span></div><div><small>ZIEL</small><strong id="basisEnd">—</strong><span id="basisEndCoords">—</span></div><div><small>DISTANZ</small><strong id="basisDistance">—</strong><span>aus GPX berechnet</span></div><div><small>PLAN-FAHRZEIT</small><strong id="basisTime">—</strong><span>Planwert mit 8 km/h</span></div></div><div class="basisWeather"><article><small>WETTER START</small><strong id="basisWxStart">—</strong><span id="basisWxStartDetail">—</span></article><article><small>WETTER ROUTENMITTE</small><strong id="basisWxMid">—</strong><span id="basisWxMidDetail">—</span></article><article><small>WETTER ZIEL</small><strong id="basisWxEnd">—</strong><span id="basisWxEndDetail">—</span></article></div><p class="basisSource" id="basisSource">Ortsnamen: © OpenStreetMap-Mitwirkende/Nominatim · Wetter: Open-Meteo. Bei fehlendem Internet bleibt die GPX-Route vollständig nutzbar.</p></section>
+<section class="tourInfoManager" id="tourInfoManager"><div class="basisHead"><div><small>DAUERHAFT INTEGRIERTE TOUR-ROUTENINFOS</small><strong>Landgang, Passagen und Skipperbriefing für sieben Standardrouten</strong><span>Die geprüften Informationen sind Bestandteil der App. Ein später importiertes Tour-Paket wird als lokale Aktualisierung darübergelegt.</span></div><div class="basisActions"><button type="button" class="miniBtn" id="exportTourAnalysis">⇩ TOUR-ANALYSEPAKET</button><label class="miniBtn routeInfoImportLabel" for="tourInfoInput">⇧ TOUR-UPDATE</label><input id="tourInfoInput" type="file" accept=".json,application/json" hidden><button type="button" class="miniBtn danger" id="removeOriginalRouteInfo" hidden>ORIGINAL WIEDERHERSTELLEN</button><button type="button" class="miniBtn danger" id="removeAllOriginalRouteInfo" hidden>ALLE INFOS AUSBLENDEN</button><button type="button" class="miniBtn secondary" id="restoreBuiltInTourInfo" hidden>TOUR-INFOS WIEDERHERSTELLEN</button></div></div><div class="routeInfoStatus active" id="tourInfoStatus">Die Tourinfos für alle sieben Standardrouten sind dauerhaft integriert.</div></section>
+<div class="nautikToday">
+  <div class="nautikFlag" id="nautikFlag">NAUTIK</div>
+  <div class="nautikBody"><small>NAUTIK HEUTE</small><strong id="nautikTitle">—</strong><ul id="nautikItems"></ul></div>
+  <div class="nautikOfficial"><small>OFFIZIELLER KONTEXT</small><strong id="nautikOfficial">—</strong></div>
+</div>
+<div class="grid3"><article class="card"><h3>ROUTEN-DETAILS</h3><div class="metrics"><div class="metric"><small>Distanz</small><strong id="metricKm">—</strong></div><div class="metric"><small>Fahrzeit</small><strong id="metricTime">—</strong></div><div class="metric"><small>GPX-Punkte</small><strong id="metricPts">—</strong></div></div><ul class="highlightList"><li>🧭 <strong>Route:</strong> <span id="routeText">—</span></li><li>🌙 <strong>Nacht:</strong> <span id="nightText">—</span></li><li>🌊 <strong>Gewässer:</strong> <span id="watersText">—</span></li></ul></article>
+<article class="card"><h3>SKIPPER-HINWEISE</h3><div id="skipperPassages"></div><div class="liveLayer"><button id="loadNautical" class="miniBtn">🌉 OSM-BRÜCKEN / SCHLEUSEN LADEN</button><small id="nauticalStatus">Optionaler Online-Layer. Öffnungszeiten anschließend in Waterkaarten prüfen.</small></div></article>
+<article class="card"><h3>LANDGANG & ETAPPE</h3><ul class="hintList" id="landgangList"></ul><button id="gpsBtn" class="miniBtn secondary">📍 MEINE GPS-POSITION</button><small id="gpsStatus">Position wird nur lokal im Browser verwendet. Sie wird zusätzlich für „Was kommt als Nächstes?“ genutzt.</small></article></div>
+<div class="actionbar cockpitActions"><a class="action aqua" id="gpxOpen" href="#">⌁ GPX ÖFFNEN</a><a class="action" id="gpxDownload" href="#" download>⇩ GPX SICHERN</a><a class="action primary" href="https://waterkaarten.app/" target="_blank" rel="noopener">◉ WATERKAARTEN</a></div></section>
+<section class="screen" id="screen-tagesplan">
+  <div class="headrow"><div><div class="kicker">TOUR 2026 · DAUERHAFT INTEGRIERT</div><h2 class="routeTitle">Tagesplan</h2><p class="subtitle">Der ausgewählte Fahrtag als ausführlicher Ablauf aus den fest eingebauten Routeninformationen.</p></div><span class="chip aqua">OFFLINE VERFÜGBAR</span></div>
+  <div class="detailDayNav" id="tagesplanDayNav" aria-label="Fahrtag für Tagesplan wählen"></div>
+  <div id="tagesplanDetail" class="dayPlanDetail"></div>
+</section>
+
+<section class="screen" id="screen-runner">
+  <div class="headrow runnerHead"><div><div class="kicker">RUNNER TRANSFER · ARTEMIS ≈ LAUFTEMPO</div><h2 class="routeTitle">Runner</h2><p class="subtitle">Parallel zur Tagesroute laufen, während Artemis zum vereinbarten Pickup weiterfährt.</p></div><span class="chip aqua">ADDITIVER RUNNER-MODUS</span></div>
+  <div class="detailDayNav runnerDayNav" id="runnerDayNav" aria-label="Fahrtag für Runner wählen"></div>
+  <section class="runnerEmpty card" id="runnerEmpty" hidden><h3 id="runnerEmptyTitle">Kein Runner-Transfer</h3><p id="runnerEmptyText"></p></section>
+  <div id="runnerWorkspace" hidden>
+    <div class="runnerRouteChoices" id="runnerRouteChoices"></div>
+    <section class="runnerHero card">
+      <div><small>AKTIVE RUNNER-STRECKE</small><h3 id="runnerVariantTitle">—</h3><p><span id="runnerContext">—</span> · <span id="runnerAssumption">—</span></p></div>
+      <div class="runnerVariantButtons" id="runnerVariantButtons"></div>
+    </section>
+    <div class="runnerMetrics">
+      <article><small>ARTEMIS</small><strong id="runnerWaterKm">—</strong><span>Wasserweg Start → Pickup</span></article>
+      <article><small>RUNNER</small><strong id="runnerRunKm">—</strong><span>gerouteter Fußweg</span></article>
+      <article><small>DIFFERENZ</small><strong id="runnerDelta" class="runnerSyncValue">—</strong><span>ideal möglichst nahe 0 %</span></article>
+    </div>
+    <section class="runnerTransfer card"><div><small>🏃 RUN START</small><strong id="runnerStartName">—</strong></div><div class="runnerArrow">→</div><div><small>🏁 PICKUP</small><strong id="runnerPickupName">—</strong></div></section>
+    <div class="runnerMapCard"><div class="runnerLegend"><span><i class="boat"></i> Artemis</span><span><i class="run"></i> Runner</span><span>🏃 Start</span><span>🏁 Pickup</span></div><div id="runnerMap" class="runnerMap"></div><div class="runnerMapFoot">Online-Kartenbasis © OpenStreetMap · Fußroute wird über aktuelles OSM-Wegenetz berechnet und lokal zwischengespeichert.</div></div>
+    <div class="runnerActions"><button type="button" class="action primary" id="runnerLoad">↻ FUẞROUTE LADEN</button><button type="button" class="action" id="runnerLocate">◎ MEINE POSITION</button><button type="button" class="action" id="runnerGpx" disabled>⇩ RUNNER-GPX</button><a class="action" id="runnerGoogle" href="#" target="_blank" rel="noopener">↗ GOOGLE MAPS</a></div>
+    <div class="runnerStatus" id="runnerRouteStatus">Runner wird vorbereitet …</div>
+    <div class="runnerInfoGrid"><article class="card"><h3>Hinweise</h3><ul id="runnerNotes"></ul></article><article class="card"><h3>Quellen / Kontrolle</h3><div class="runnerSources" id="runnerSources"></div><p class="mutedNote">Die Runner-Funktion ergänzt das Cockpit. Sie verändert keine Skipper-, GPX-, Wetter-, Nautik- oder Speicherfunktion. Vor Ort entscheiden Skipper und Läufer über sicheren Ausstieg, Weg und Pickup.</p></article></div>
+  </div>
+</section>
+<section class="screen" id="screen-weather">
+  <div class="headrow">
+    <div>
+      <div class="kicker">ECHTES WETTER</div>
+      <h2 class="routeTitle">Wetter & Wind</h2>
+      <p class="subtitle">Live-Daten für die ausgewählte Tagesroute. Auf Tag 2 zusätzlich IJsselmeer-Fokus.</p>
+    </div>
+    <button class="miniBtn" id="weatherRefreshFull">🌦️ WETTER LADEN</button>
+  </div>
+
+  <div class="weatherHero card">
+    <div class="weatherHeroIcon" id="weatherHeroIcon">🌦️</div>
+    <div class="weatherHeroText">
+      <small id="weatherHeroPlace">Route</small>
+      <h3 id="weatherHeroTemp">—</h3>
+      <strong id="weatherHeroDesc">Noch nicht geladen</strong>
+      <span id="weatherUpdated">Quelle: Open-Meteo · noch nicht aktualisiert</span>
+    </div>
+    <div class="weatherHeroRisk" id="weatherRisk">
+      <small>SKIPPER-EINSCHÄTZUNG</small><strong>—</strong><span>Nur Zusatzinformation – Waterkaarten und lokale Beobachtung bleiben maßgeblich.</span>
+    </div>
+  </div>
+
+  <div class="weatherGrid">
+    <article class="card"><h3>WIND</h3><div class="weatherMetricGrid">
+      <div><small>Wind</small><strong id="wxWind">—</strong></div>
+      <div><small>Böen</small><strong id="wxGust">—</strong></div>
+      <div><small>Richtung</small><strong id="wxDir">—</strong></div>
+      <div><small>Beaufort ca.</small><strong id="wxBft">—</strong></div>
+    </div></article>
+    <article class="card"><h3>NIEDERSCHLAG & SICHT</h3><div class="weatherMetricGrid">
+      <div><small>Regen</small><strong id="wxRain">—</strong></div>
+      <div><small>Wahrscheinlichkeit</small><strong id="wxRainProb">—</strong></div>
+      <div><small>Sicht</small><strong id="wxVisibility">—</strong></div>
+      <div><small>Bewölkung</small><strong id="wxCloud">—</strong></div>
+    </div></article>
+    <article class="card"><h3>TAGESWERTE</h3><div class="weatherMetricGrid">
+      <div><small>Min</small><strong id="wxMin">—</strong></div>
+      <div><small>Max</small><strong id="wxMax">—</strong></div>
+      <div><small>Sonnenaufgang</small><strong id="wxSunrise">—</strong></div>
+      <div><small>Sonnenuntergang</small><strong id="wxSunset">—</strong></div>
+    </div></article>
+  </div>
+
+  <div class="card" id="ijsselmeerWeatherCard" hidden>
+    <div class="nauticRouteHead"><div><small>TAG 2 · IJSSELMEER</small><strong>Zusätzlicher Seewetter-Check</strong></div><span class="chip yellow">ENTSCHEIDUNGSTAG</span></div>
+    <div class="weatherMetricGrid marine">
+      <div><small>Wellenhöhe</small><strong id="wxWave">—</strong></div>
+      <div><small>Wellenrichtung</small><strong id="wxWaveDir">—</strong></div>
+      <div><small>Wellenperiode</small><strong id="wxWavePeriod">—</strong></div>
+      <div><small>Status</small><strong id="wxMarineStatus">—</strong></div>
+    </div>
+    <p class="mutedNote">Marine-Daten sind eine zusätzliche Prognosehilfe. Sichtprüfung in Stavoren, Waterkaarten und Skipperentscheidung bleiben maßgeblich.</p>
+  </div>
+
+  <div class="card">
+    <h3>PROGNOSE FÜR DEN FAHRTAG</h3>
+    <div id="hourlyForecast" class="hourlyForecast"><div class="placeholder">Wetter noch nicht geladen.</div></div>
+    <p class="mutedNote" id="forecastWindowNote"></p>
+  </div>
+</section>
+<section class="screen" id="screen-nautik">
+  <div class="headrow">
+    <div><div class="kicker">NAUTIK</div><h2 class="routeTitle">Nautik heute</h2>
+    <p class="subtitle">GPX-Route + aktives Schiffsprofil + nautische Zusatzdaten. Waterkaarten bleibt maßgeblich.</p></div>
+    <span class="chip yellow">LIVE PRÜFEN</span>
+  </div>
+  <div class="nautikDashboard">
+    <article class="card"><h3>AKTIVES SCHIFF</h3><div id="nautikShipFacts" class="shipFacts"></div>
+      <p class="mutedNote">Für die Passierbarkeitsbewertung werden Höhe, Tiefgang, Breite und Länge des aktuell gespeicherten Profils verwendet.</p></article>
+    <article class="card"><h3>BEWERTUNGSLOGIK</h3>
+      <div class="clearanceLegend">
+        <div><span class="clearanceDot ok"></span><strong>Grün</strong><small>bekannter Wert mit sinnvoller Reserve</small></div>
+        <div><span class="clearanceDot attention"></span><strong>Signalgelb</strong><small>geringe/fehlende Daten – prüfen</small></div>
+        <div><span class="clearanceDot stop"></span><strong>Rot</strong><small>bekannter Wert liegt unter dem Schiffsbedarf</small></div>
+      </div>
+      <p class="mutedNote">Unbekannte oder nicht eindeutig nautische OSM-Maße werden niemals automatisch als „passt“ gewertet.</p>
+    </article>
+    <article class="card"><h3>OFFIZIELLE QUELLEN 2026</h3>
+      <ul class="hintList"><li>🇳🇱 Fryslân: Brücken-/Schleusenbedienung 2026</li><li>🇳🇱 Overijssel: Noordwest-Overijssel Bedienzeiten</li><li>⚠️ Weerribben-Wieden: temporäre Sperrungen möglich</li></ul>
+      <div class="sourceBtns">
+        <a class="miniBtn linkBtn" href="https://www.fryslan.frl/brugbediening" target="_blank" rel="noopener">FRYSLÂN</a>
+        <a class="miniBtn linkBtn" href="https://www.overijssel.nl/onderwerpen/verkeer-en-vervoer/varen-in-overijssel/informatie-bedieningstijden-sluizen-en-bruggen-noordwest-overijssel" target="_blank" rel="noopener">OVERIJSSEL</a>
+      </div>
+    </article>
+  </div>
+  <div class="card nauticRouteCard">
+    <div class="nauticRouteHead"><div><small>AKTUELLER TAG</small><strong id="nautikRouteName">—</strong></div>
+      <button id="scanNautical" class="miniBtn">🌉 ROUTE NAUTISCH SCANNEN</button></div>
+    <div class="nextNautic cardLite" id="nextNauticCard">
+      <div class="nextIcon" id="nextNauticIcon">🧭</div>
+      <div class="nextText">
+        <small>WAS KOMMT ALS NÄCHSTES?</small>
+        <strong id="nextNauticName">Route noch nicht gescannt</strong>
+        <span id="nextNauticDetail">Nautik-Scan starten. Mit GPS kann anschließend das nächste Objekt vor dem Boot hervorgehoben werden.</span>
+      </div>
+      <div class="nextDistance">
+        <small>ENTFERNUNG</small>
+        <strong id="nextNauticDistance">—</strong>
+      </div>
+    </div>
+    <div id="scanSummary" class="scanSummary">
+      <div><small>GRÜN</small><strong id="scanGreen">0</strong></div>
+      <div><small>PRÜFEN</small><strong id="scanYellow">0</strong></div>
+      <div><small>ROT</small><strong id="scanRed">0</strong></div>
+      <div><small>OBJEKTE</small><strong id="scanTotal">0</strong></div>
+    </div>
+    <div id="nauticObjectList" class="nauticObjectList"><div class="placeholder">Noch kein Scan durchgeführt.</div></div>
+    <p class="mutedNote" id="scanStatus">Der Scan nutzt mehrere OpenStreetMap/Overpass-Endpunkte als Zusatzquelle. Öffnungszeiten, Sperrungen, Wasserstände und endgültige Passierbarkeit bitte in Waterkaarten bzw. vor Ort prüfen.</p>
+  </div>
+</section>
+<section class="screen" id="screen-waterkaarten"><div class="headrow"><div><div class="kicker">NAVIGATION</div><h2 class="routeTitle">Waterkaarten</h2><p class="subtitle">Cockpit plant und informiert – Waterkaarten navigiert.</p></div></div><div class="card"><h3>GPX-Workflow</h3><p>Öffne am jeweiligen Fahrtag die Original-GPX über den Cockpit-Button und übergib sie auf dem iPad an Waterkaarten. Eine direkte proprietäre Schnittstelle wird hier nicht vorgetäuscht.</p><a class="action primary" href="https://waterkaarten.app/" target="_blank" rel="noopener">Waterkaarten öffnen</a></div></section>
+<section class="screen" id="screen-landgang">
+  <div class="headrow"><div><div class="kicker">TOUR & LAND · DAUERHAFT INTEGRIERT</div><h2 class="routeTitle">Landgang</h2><p class="subtitle">Ausführliche Stopps, Aktivitäten, Gastronomie und Versorgung für den ausgewählten Fahrtag.</p></div><span class="chip aqua">OFFLINE VERFÜGBAR</span></div>
+  <div class="detailDayNav" id="landgangDayNav" aria-label="Fahrtag für Landgang wählen"></div>
+  <div id="landgangOverview" class="landgangDetail"></div>
+</section>
+<section class="screen" id="screen-nacht">
+  <div class="headrow"><div><div class="kicker">LIEGEPLÄTZE · DAUERHAFT INTEGRIERT</div><h2 class="routeTitle">Nachtplätze</h2><p class="subtitle">Fotos, Charakter, Versorgung und Anlegetaktik für alle sieben geplanten Nächte.</p></div><span class="chip aqua">BILDER OFFLINE</span></div>
+  <div class="detailDayNav" id="nightDayNav" aria-label="Fahrtag für Nachtplatz wählen"></div>
+  <div id="nightOverview" class="nightDetail"></div>
+</section>
+
+<section class="screen" id="screen-bunkern">
+  <div class="headrow bunkerHead">
+    <div><div class="kicker">VOR DER ABFAHRT · LOKAL GESPEICHERT</div><h2 class="routeTitle">Bunkern</h2><p class="subtitle">Pack- und Übergabeliste abhaken, Mengen notieren, Zuständigkeiten verteilen und eigene Einträge ergänzen.</p></div>
+    <span class="chip aqua">AUF DIESEM GERÄT</span>
+  </div>
+
+  <section class="bunkerOverview card" aria-label="Fortschritt der Bunkerliste">
+    <div class="bunkerProgressText"><small>FORTSCHRITT</small><strong><span id="bunkerDoneCount">0</span> von <span id="bunkerTotalCount">0</span> erledigt</strong><span id="bunkerProgressText">Liste wird geladen …</span></div>
+    <div class="bunkerProgress"><div role="progressbar" aria-label="Fortschritt Bunkerliste" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="bunkerProgressBar"></span></div><strong id="bunkerPercent">0 %</strong></div>
+    <span class="bunkerSaveStatus" id="bunkerSaveStatus">Änderungen werden automatisch gespeichert.</span>
+  </section>
+
+  <section class="bunkerAdd card" aria-labelledby="bunkerAddTitle">
+    <div><small>EIGENE ERGÄNZUNG</small><h3 id="bunkerAddTitle">Was fehlt noch?</h3><p>Eigene Einträge werden nur auf diesem Gerät gespeichert und können wieder gelöscht werden.</p></div>
+    <label><small>BEZEICHNUNG</small><input id="bunkerNewItem" type="text" maxlength="120" placeholder="Neuen Eintrag ergänzen"></label>
+    <label><small>KATEGORIE</small><select id="bunkerNewCategory"></select></label>
+    <button class="action primary" type="button" id="bunkerAddItem">＋ HINZUFÜGEN</button>
+  </section>
+
+  <div class="bunkerTools">
+    <div class="bunkerFilters" role="group" aria-label="Bunkerliste filtern"><button type="button" data-bunker-filter="all" class="active">ALLE</button><button type="button" data-bunker-filter="open">OFFEN</button><button type="button" data-bunker-filter="done">ERLEDIGT</button></div>
+    <button class="miniBtn danger" type="button" id="bunkerReset">LISTE ZURÜCKSETZEN</button>
+  </div>
+  <div class="bunkerCategories" id="bunkerCategories"></div>
+  <p class="bunkerStorageNote"><strong>Speicherung:</strong> Die Grundliste ist fest Bestandteil der App. Häkchen, Mengen, Zuständigkeiten und eigene Ergänzungen werden automatisch im Browser dieses Geräts gespeichert. Sie werden nicht zwischen iPad, iPhone und MacBook synchronisiert und können beim Löschen der Websitedaten verloren gehen.</p>
+</section>
+
+<section class="screen" id="screen-help">
+  <div class="headrow helpHead">
+    <div>
+      <div class="kicker">BEDIENUNG · OFFLINE VERFÜGBAR</div>
+      <h2 class="routeTitle">Hilfe &amp; Anleitung</h2>
+      <p class="subtitle">Die wichtigsten Funktionen des Friesland Skipper Cockpit Simple – klar gebündelt für iPad, iPhone und MacBook.</p>
+    </div>
+    <span class="chip aqua">V1.0.0 TEST</span>
+  </div>
+
+  <section class="helpQuick card" aria-labelledby="helpQuickTitle">
+    <div class="helpQuickIntro"><small>SCHNELLSTART</small><h3 id="helpQuickTitle">So beginnt ein Fahrtag</h3><p>Vier Schritte genügen für den täglichen Überblick. Waterkaarten bleibt die eigentliche Navigations-App.</p></div>
+    <ol class="helpSteps">
+      <li><span>1</span><div><strong>Fahrtag wählen</strong><small>Oben in der Kopfzeile den gewünschten Tag auswählen.</small></div></li>
+      <li><span>2</span><div><strong>HEUTE prüfen</strong><small>Route, Aktion, Nachtplatz, Wetter-Kurzstatus und Tageskarten ansehen.</small></div></li>
+      <li><span>3</span><div><strong>Tagesplan öffnen</strong><small>Ablauf, Orte, Landgänge und Nachtplatz kontrollieren.</small></div></li>
+      <li><span>4</span><div><strong>Waterkaarten nutzen</strong><small>GPX öffnen oder sichern und die Fahrt dort navigieren.</small></div></li>
+    </ol>
+  </section>
+
+  <div class="helpGrid">
+    <details class="helpTopic" open><summary><span>⌂</span><div><strong>Cockpit und Fahrtag</strong><small>Tagesauswahl, Route und Skipperbrief</small></div></summary><div class="helpBody"><ul><li>Der Fahrtag wird oben in der Kopfzeile ausgewählt und gilt anschließend für Cockpit, Wetter, Tagesplan, Landgang und Nachtplätze.</li><li>Im Cockpit zeigt <strong>Originalroute</strong> die fest eingebaute GPX. Eine importierte Waterkaarten-Alternative kann separat aktiviert werden.</li><li>Skipperbrief, Routendetails, Skipper-Hinweise sowie „Landgang &amp; Etappe“ geben den kompakten Tagesüberblick.</li><li><strong>GPX öffnen</strong> übergibt die aktive Tagesroute an eine geeignete App. <strong>GPX sichern</strong> speichert eine Kopie als Datei.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>▣</span><div><strong>Tagesplan, Landgang und Nachtplätze</strong><small>Die Reiseinformationen im Detail</small></div></summary><div class="helpBody"><ul><li>Der <strong>Tagesplan</strong> zeigt den Fahrtag chronologisch mit Gewässerfolge, Passagen, Stopps, Nachtziel und Reserve.</li><li>Bei Orten und Naturzielen öffnen <strong>Ort-Info</strong> und <strong>Karte</strong> externe Seiten; dafür wird Internet benötigt.</li><li><strong>Landgang</strong> enthält ausführliche Karten zu Erleben, Essen &amp; Trinken, Versorgung und Alternativen.</li><li><strong>Nachtplätze</strong> zeigt Foto, Charakter, Infrastruktur, Anlegetaktik, Kartenlink, Quelle und Plan B. Freie Plätze, Wassertiefe und Eignung müssen vor Ort geprüft werden.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>🌦️</span><div><strong>Wetter und Wind</strong><small>Live-Daten laden und richtig einordnen</small></div></summary><div class="helpBody"><ul><li>Wetterdaten werden für den ausgewählten Fahrtag über Open-Meteo geladen und benötigen Internet.</li><li>Mit <strong>Wetter laden</strong> beziehungsweise <strong>Aktualisieren</strong> werden Prognose, Wind, Böen, Regen und Sicht neu abgerufen.</li><li>Tag 2 enthält zusätzlich den IJsselmeer-Seewetter-Check mit Wellenhöhe, Richtung und Periode.</li><li>Prognosen sind Entscheidungshilfen. Lokale Beobachtung, amtliche Hinweise und die Skipperentscheidung bleiben maßgeblich.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>🌉</span><div><strong>Nautik, Karte und GPS</strong><small>Passagen prüfen und Position verwenden</small></div></summary><div class="helpBody"><ul><li>Die Karte zeigt die aktive GPX-Route. Der Online-Kartenhintergrund und optionale OSM-Brücken-/Schleusendaten benötigen Internet.</li><li>Der nautische Scan vergleicht bekannte Werte mit Länge, Breite, Tiefgang und Höhe des gespeicherten Schiffsprofils.</li><li>Grün bedeutet ausreichende bekannte Reserve, Signalgelb bedeutet prüfen, Rot bedeutet einen bekannten Konflikt.</li><li><strong>Meine GPS-Position</strong> verwendet die Position nur lokal im Browser. Dafür muss der Standortzugriff erlaubt sein.</li><li>Fehlende oder unklare Daten werden nie automatisch als „passend“ bewertet.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>🗺️</span><div><strong>Waterkaarten und Alternativroute</strong><small>GPX-Workflow ohne Veränderung der Originalroute</small></div></summary><div class="helpBody"><ol><li>Den gewünschten Fahrtag auswählen.</li><li>Eine in Waterkaarten erstellte GPX über <strong>GPX-Alternative importieren</strong> laden.</li><li>Zwischen Originalroute und Alternative umschalten.</li><li>Bei Bedarf die Alternative löschen; die fest eingebaute Originalroute bleibt immer erhalten.</li></ol><p>Automatische Basis- und Wetterdaten können für die Alternative ergänzt werden. Zusätzliche Routeninfos werden nur übernommen, wenn Fahrtag und GPX-Fingerabdruck passen.</p></div></details>
+
+    <details class="helpTopic"><summary><span>⇧</span><div><strong>Tour-Routeninfos</strong><small>Import, Vorrang und Wiederherstellung</small></div></summary><div class="helpBody"><ul><li>Die geprüften Informationen für alle sieben Standardrouten sind dauerhaft in der App eingebaut.</li><li>Ein importiertes <strong>Tour-Update</strong> wird lokal gespeichert und liegt über der integrierten Fassung.</li><li><strong>Original wiederherstellen</strong> entfernt die lokale Ergänzung des Fahrtags. Die integrierte Fassung erscheint wieder.</li><li><strong>Alle Infos ausblenden</strong> blendet die integrierten Zusatzinfos lokal aus; <strong>Tour-Infos wiederherstellen</strong> aktiviert sie erneut.</li><li>Analyse- und Informationspakete enthalten keine aktuelle GPS-Position.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>⚙️</span><div><strong>Schiffsprofil</strong><small>Artemis-Daten bearbeiten und speichern</small></div></summary><div class="helpBody"><ul><li>Änderungen werden mit <strong>Schiffsprofil speichern</strong> lokal im Browser gesichert.</li><li><strong>Auf Artemis zurücksetzen</strong> stellt die eingebauten Ausgangswerte wieder her.</li><li>Ein anderes Bootsprofil ändert nicht automatisch GPX, Tagespläne, Nachtplatzempfehlungen oder Routenfreigaben.</li><li>Nach einer Änderung müssen Höhe, Tiefgang, Breite, Länge, Passagen und Liegeplätze für das neue Boot erneut fachlich geprüft werden.</li></ul></div></details>
+
+    <details class="helpTopic"><summary><span>◉</span><div><strong>Speicherung und Offline-Nutzung</strong><small>Was dauerhaft bleibt und was lokal liegt</small></div></summary><div class="helpBody"><div class="helpStorage"><div><small>FEST IN DER APP</small><strong>Original-GPX, Tagesplan, Landgang, Nachtplatztexte und Bilder, Ortszuordnungen, Bunker-Grundliste und Hilfe</strong></div><div><small>LOKAL IM BROWSER</small><strong>Schiffsprofil, GPX-Alternativen, ausgewählte Routen, importierte Updates sowie Bunker-Häkchen, Mengen, Zuständigkeiten und eigene Ergänzungen</strong></div><div><small>INTERNET ERFORDERLICH</small><strong>Wetter, Kartenhintergrund, externe Links und optionale Online-Nautikdaten</strong></div></div><p>Lokale Browserdaten werden nicht automatisch zwischen iPad, iPhone und MacBook synchronisiert. Beim Löschen der Websitedaten können lokale Änderungen verschwinden; die fest eingebauten Inhalte bleiben Bestandteil der App.</p></div></details>
+
+    <details class="helpTopic"><summary><span>＋</span><div><strong>Zum Home-Bildschirm hinzufügen</strong><small>App-Ansicht auf iPad und iPhone</small></div></summary><div class="helpBody"><ol><li>Die veröffentlichte App in Safari öffnen.</li><li>Auf <strong>Teilen</strong> tippen.</li><li><strong>Zum Home-Bildschirm</strong> auswählen.</li><li>Namen bestätigen und <strong>Hinzufügen</strong> wählen.</li></ol><p>Für einen frischen Versionsstand die GitHub-Pages-Seite zuerst einmal online in Safari öffnen. Anschließend kann sie erneut zum Home-Bildschirm hinzugefügt beziehungsweise aktualisiert werden.</p></div></details>
+  </div>
+
+  <section class="helpSafety card">
+    <div class="helpSafetyIcon">⚠️</div><div><small>WICHTIGER SICHERHEITSHINWEIS</small><h3>Planungshilfe – keine amtliche Navigation</h3><p>Das Friesland Skipper Cockpit ersetzt weder Waterkaarten beziehungsweise eine aktuelle amtliche Wasserkarte noch Schifffahrtszeichen, Brücken- und Schleuseninformationen, Wetterwarnungen oder die Beobachtung vor Ort. Durchfahrt, Tiefgang, freie Liegeplätze, Bedienzeiten und Sperrungen müssen aktuell geprüft werden. Die Entscheidung und Verantwortung bleiben beim Skipper.</p></div>
+  </section>
+</section>
+
+<section class="screen" id="screen-settings">
+  <div class="headrow">
+    <div>
+      <div class="kicker">SCHIFF & APP</div>
+      <h2 class="routeTitle">Schiffsprofil</h2>
+      <p class="subtitle">Das aktive Schiffsprofil wird lokal im Browser gespeichert und kann später für andere Boote geändert werden.</p>
+    </div>
+    <span class="chip green" id="profileStatusChip">ARTEMIS AKTIV</span>
+  </div>
+
+  <div class="shipProfileGrid">
+    <article class="shipHero card">
+      <img src="assets/artemis.webp" alt="Artemis – Aquanaut Andante 400 AC Pilothouse">
+      <div class="shipHeroText">
+        <small>AKTIVES SCHIFFSPROFIL</small>
+        <h3 id="shipHeroName">Artemis</h3>
+        <p id="shipHeroType">Aquanaut Andante 400 AC Pilothouse</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>GRUNDDATEN</h3>
+      <div class="profileForm">
+        <label>Schiffsname<input id="shipName" type="text" value="Artemis"></label>
+        <label>Bootstyp<input id="shipType" type="text" value="Aquanaut Andante 400 AC Pilothouse"></label>
+        <label>Gesamtlänge [m]<input id="shipLength" type="number" step="0.01" value="12.30"></label>
+        <label>Breite [m]<input id="shipBeam" type="number" step="0.01" value="3.85"></label>
+        <label>Tiefgang [m]<input id="shipDraft" type="number" step="0.01" value="1.15"></label>
+        <label>Höhe über Wasserlinie [m]<input id="shipAirDraft" type="number" step="0.01" value="4.15"></label>
+        <label>Kopffreiheit [m]<input id="shipHeadroom" type="number" step="0.01" value="2.00"></label>
+        <label>Liegeplätze<input id="shipBerths" type="number" step="1" value="6"></label>
+      </div>
+    </article>
+
+    <article class="card">
+      <h3>ANTRIEB & TANKS</h3>
+      <div class="profileForm">
+        <label>Motor<input id="shipEngine" type="text" value="Volvo D3 110 PK"></label>
+        <label>Verbrauch min. [l/h]<input id="shipFuelMin" type="number" step="0.1" value="6"></label>
+        <label>Verbrauch max. [l/h]<input id="shipFuelMax" type="number" step="0.1" value="8"></label>
+        <label>Kraftstofftank [l]<input id="shipFuelTank" type="number" step="1" value="500"></label>
+        <label>Trinkwassertank [l]<input id="shipWaterTank" type="number" step="1" value="500"></label>
+        <label>Fäkalientank [l]<input id="shipWasteTank" type="number" step="1" value="500"></label>
+      </div>
+    </article>
+  </div>
+
+  <div class="profileActions">
+    <button class="action primary" id="saveShipProfile">SCHIFFSPROFIL SPEICHERN</button>
+    <button class="action" id="resetShipProfile">AUF ARTEMIS ZURÜCKSETZEN</button>
+  </div>
+
+  <div class="grid3">
+    <article class="card">
+      <h3>NAUTISCHE PRÜFLOGIK</h3>
+      <p>Das Cockpit verwendet Länge, Breite, Tiefgang und Höhe als Grundlage für spätere Brücken-, Engstellen- und Tiefenbewertungen.</p>
+      <div class="clearanceLegend">
+        <div><span class="clearanceDot ok"></span><strong>Grün</strong><small>ausreichende Reserve</small></div>
+        <div><span class="clearanceDot attention"></span><strong>Signalgelb</strong><small>geringe Reserve / prüfen</small></div>
+        <div><span class="clearanceDot stop"></span><strong>Rot</strong><small>nicht passend / nicht befahren</small></div>
+      </div>
+    </article>
+    <article class="card">
+      <h3>AKTUELLE ARTEMIS-MAẞE</h3>
+      <div class="shipFacts" id="shipFacts"></div>
+    </article>
+    <article class="card">
+      <h3>WICHTIG</h3>
+      <p>Brückenhöhen, Wassertiefen und Sperrungen werden niemals allein aus statischen Daten als verbindlich behandelt. Aktuelle Werte müssen in Waterkaarten bzw. vor Ort geprüft werden.</p>
+      <span class="chip yellow">SKIPPER ENTSCHEIDET</span>
+    </article>
+  </div>
+</section>
+<section class="screen active simpleTodayScreen" id="screen-today" aria-label="Heute">
+  <div class="simpleTodayHead">
+    <div><div class="kicker" id="simpleDayKicker">HEUTE · TAG 1</div><h2 class="routeTitle" id="simpleDayTitle">—</h2><p class="subtitle" id="simpleDayDate">—</p></div>
+    <span class="chip aqua" id="simpleRouteChip">ORIGINALROUTE</span>
+  </div>
+
+  <section class="simplePlanHero">
+    <div class="simpleSectionLabel">MEIN PLAN HEUTE</div>
+    <div class="simplePlanGrid">
+      <div><small>ROUTE</small><strong id="simplePlanRoute">—</strong><span id="simplePlanRouteState">—</span></div>
+      <div><small>AKTION</small><strong id="simplePlanAction">—</strong><span>aus dem bestehenden Tagesplan</span></div>
+      <div><small>ÜBERNACHTUNG</small><strong id="simplePlanNight">—</strong><span id="simplePlanNightAlt">—</span></div>
+    </div>
+    <button type="button" class="simplePlanChange" id="simplePlanChange">✏️ PLAN ÄNDERN</button>
+  </section>
+
+  <button type="button" class="simpleWeatherQuick" data-simple-open="weather">
+    <span class="simpleWeatherIcon" id="simpleWeatherIcon">🌦️</span>
+    <span><small>WETTER HEUTE</small><strong id="simpleWeatherText">Noch nicht geladen</strong><em id="simpleWeatherMeta">Tippen für Details</em></span>
+    <b>›</b>
+  </button>
+
+  <div class="simpleCardGrid">
+    <button type="button" class="simpleDayCard" data-simple-open="cockpit"><span class="simpleCardIcon">🧭</span><span><small>FAHRT</small><strong id="simpleDriveValue">—</strong><em>Route, Karte & GPS öffnen</em></span><b>›</b></button>
+    <button type="button" class="simpleDayCard" data-simple-open="tagesplan"><span class="simpleCardIcon">⚠️</span><span><small>SKIPPERBRIEF</small><strong id="simpleBriefValue">—</strong><em>Details</em></span><b>›</b></button>
+    <button type="button" class="simpleDayCard" data-simple-open="landgang"><span class="simpleCardIcon">⚓</span><span><small>LANDGANG</small><strong id="simpleLandValue">—</strong><em>Details</em></span><b>›</b></button>
+    <button type="button" class="simpleDayCard" data-simple-open="nacht"><span class="simpleCardIcon">🛏️</span><span><small>ÜBERNACHTUNG</small><strong id="simpleNightValue">—</strong><em>Hafenmeister & Reserven</em></span><b>›</b></button>
+    <button type="button" class="simpleDayCard simpleRunnerToday" id="simpleRunnerToday" data-simple-open="runner" hidden><span class="simpleCardIcon">🏃</span><span><small>RUNNER HEUTE</small><strong id="simpleRunnerValue">Runner-Transfer geplant</strong><em>Runner öffnen</em></span><b>›</b></button>
+  </div>
+</section>
+
+<section class="screen simpleMoreScreen" id="screen-more" aria-label="Mehr">
+  <div class="headrow"><div><div class="kicker">WEITERE FUNKTIONEN</div><h2 class="routeTitle">Mehr</h2><p class="subtitle">Alle bisherigen Bereiche bleiben vollständig erreichbar.</p></div><span class="chip aqua">BESTAND ERHALTEN</span></div>
+  <div class="simpleMoreGrid">
+    <button data-simple-open="tagesplan"><span>▣</span><strong>Tagesplan</strong><small>ausführlicher Tagesablauf</small></button>
+    <button data-simple-open="runner"><span>🏃</span><strong>Runner</strong><small>vollständige Runner-Verwaltung</small></button>
+    <button data-simple-open="landgang"><span>⚓</span><strong>Landgang</strong><small>Orte, Aktivitäten und Links</small></button>
+    <button data-simple-open="nacht"><span>🛏️</span><strong>Nachtplätze</strong><small>Plan A–C, Hafenmeister, Anrufhilfe</small></button>
+    <button data-simple-open="waterkaarten"><span>🗺️</span><strong>Waterkaarten</strong><small>bestehende Waterkaarten-Funktionen</small></button>
+    <button data-simple-open="nautik"><span>🌉</span><strong>Nautik</strong><small>Brücken, Schleusen und Schiffsprofilprüfung</small></button>
+    <button data-simple-open="bunkern"><span>☑</span><strong>Bunkern</strong><small>gespeicherte Bunkerliste</small></button>
+    <button data-simple-open="settings"><span>⚙️</span><strong>Schiffsprofil & Einstellungen</strong><small>Artemis-Daten und Einstellungen</small></button>
+    <button data-simple-open="help"><span>❔</span><strong>Hilfe</strong><small>Bedienungsanleitung</small></button>
+  </div>
+</section>
+
+<div class="simplePlanModal" id="simplePlanModal" hidden>
+  <div class="simplePlanDialog" role="dialog" aria-modal="true" aria-labelledby="simplePlanDialogTitle">
+    <div class="simpleDialogHead"><div><small>HEUTIGEN PLAN ANPASSEN</small><h2 id="simplePlanDialogTitle">PLAN ÄNDERN</h2></div><button type="button" id="simplePlanClose" aria-label="Schließen">×</button></div>
+    <section class="simplePlanSection">
+      <h3>🗺 Aktive Navigationsroute</h3>
+      <p>Diese Auswahl ist technisch aktiv und wird mit der bestehenden Skipper-Cockpit-Logik dauerhaft lokal gespeichert.</p>
+      <div class="simpleRouteChoice">
+        <button type="button" id="simpleOriginalRoute">ORIGINALROUTE</button>
+        <button type="button" id="simpleAlternativeRoute">WATERKAARTEN-ALTERNATIVE</button>
+      </div>
+      <small class="simplePlanNote" id="simpleAlternativeNote"></small>
+    </section>
+    <section class="simplePlanSection" id="simpleDayDecisionSection" hidden>
+      <h3>☀️ Tagesentscheidung</h3>
+      <p><strong>Wichtig:</strong> Diese Entscheidung ist in der bestehenden App nur eine optische Tagesmarkierung. Sie verändert keine GPX-Route und wird noch nicht dauerhaft gespeichert.</p>
+      <div class="simpleDecisionChoices" id="simpleDecisionChoices"></div>
+    </section>
+    <section class="simplePlanSection">
+      <h3>🛏 Übernachtungsoptionen</h3>
+      <p>Die vorhandenen Plan-A/B/C- und Reserveplätze bleiben Informationsoptionen. In V1.0.0 Test wird daraus bewusst noch keine neue gespeicherte Auswahl erzeugt.</p>
+      <div class="simpleNightChoices" id="simpleNightChoices"></div>
+    </section>
+    <button type="button" class="simpleDone" id="simplePlanDone">FERTIG</button>
+  </div>
+</div>
+</main></div>
+
+<nav class="simpleBottomNav" aria-label="Hauptnavigation">
+  <button type="button" class="active" data-simple-main="today"><span>☀️</span><strong>HEUTE</strong></button>
+  <button type="button" data-simple-main="drive"><span>🗺</span><strong>FAHREN</strong></button>
+  <button type="button" data-simple-main="weather"><span>🌦</span><strong>WETTER</strong></button>
+  <button type="button" data-simple-main="more"><span>•••</span><strong>MEHR</strong></button>
+</nav>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="assets/routes-data.js?v=1.0.0-test"></script><script src="assets/tour-info-data.js?v=1.0.0-test"></script><script src="assets/night-info-data.js?v=1.0.0-test"></script><script src="assets/day-place-links.js?v=1.0.0-test"></script><script src="assets/bunkering-data.js?v=1.0.0-test"></script><script src="assets/berth-plans-data.js?v=1.0.0-test"></script><script src="assets/app.js?v=1.0.0-test"></script><script src="assets/bunkering.js?v=1.0.0-test"></script><script src="assets/runner-data.js?v=1.0.0-test"></script><script src="assets/runner.js?v=1.0.0-test"></script><script src="assets/simple-ui.js?v=1.0.0-test"></script></body></html>
