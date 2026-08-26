@@ -1,4 +1,4 @@
-# Friesland Skipper Cockpit Simple V1.0.0 Test
+# Friesland Skipper Cockpit Simple V1.0.1 Test
 
 ## Neuer, strikt getrennter Ableger
 
@@ -7,14 +7,25 @@ Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise
 - Neue Hauptnavigation: **HEUTE | FAHREN | WETTER | MEHR**
 - **HEUTE** bündelt Tagesroute, Aktion, Nachtplatz, Wetter-Kurzstatus und relevante Tageskarten.
 - **PLAN ÄNDERN** verwendet für die tatsächlich aktive Navigationsroute ausschließlich die bereits vorhandene lokale Routenwahl.
-- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.0 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
+- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.1 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
 - Nachtplatz-Plan A/B/C/Reserve bleibt zunächst Informationslogik; es wird keine neue dauerhafte Auswahl eingeführt.
 - Technische Routenverwaltung bleibt vollständig vorhanden und liegt unter **FAHREN → ROUTE VERWALTEN**.
 - Die alte Sidebar bleibt im Quellbestand erhalten, wird in der Simple-Oberfläche aber ausgeblendet.
 - `assets/app.js` und `assets/app.css` der Ausgangsbasis bleiben unverändert. Die neue Oberfläche wird additiv durch `assets/simple-ui.js` und `assets/simple-ui.css` ergänzt.
 - Der `.git`-Ordner der alten App wurde **nicht** in diesen Ableger übernommen. Für dieses Projekt muss ein neues GitHub-Repository verwendet werden.
 
-## Bestandsschutz V1.0.0 Test
+
+## Neu in V1.0.1 Test – manueller iCloud-Backuptransfer
+
+- **Keine automatische Synchronisation und kein Supabase.** Die App bleibt offline-first und speichert wie bisher lokal im Browser.
+- Unter **MEHR → DATEN & BACKUP** kann der gesamte relevante lokale App-Zustand als eine JSON-Datei exportiert werden.
+- Auf iPhone/iPad wird – sofern vom Browser unterstützt – der System-Teilen-Dialog verwendet. Dort kann die JSON über **„In Dateien sichern“** in einen iCloud-Drive-Ordner gelegt werden. Als Fallback wird eine normale JSON-Datei heruntergeladen.
+- Ein Backup kann auf dem iPad oder iPhone wieder importiert werden. Vor der Übernahme werden App-Version, Erstellungszeitpunkt und enthaltene Daten angezeigt.
+- Vor jedem Import wird der aktuelle lokale Zustand automatisch als **einmalige Rücksicherung für diese App-Sitzung** gespeichert. Der letzte Import kann über **„LETZTEN IMPORT RÜCKGÄNGIG MACHEN“** zurückgenommen werden.
+- Der Export umfasst die bestehenden `fsc_...`-Speicherdaten (u. a. Schiffsprofil, Routenwahl, importierte Waterkaarten-Alternativen, Tour-/Routeninfos, Bunkern und Runner-Caches). Interne Backup-Metadaten und die Rücksicherung selbst werden nicht mit exportiert.
+- Fest eingebaute Programmdateien, Standard-GPX, Routendaten, Wetter-/Nautiklogik und statische Reisedaten werden durch Export oder Import nicht verändert.
+
+## Bestandsschutz V1.0.1 Test
 
 Unverändert übernommen werden insbesondere alle Original-GPX, Routendaten, Tourinformationen, Runner-Daten, Nachtplatz-/Hafenmeisterdaten, Bunkerdaten, Bilder, bestehende Speicher-Schlüssel und die vorhandene Fachlogik.
 
