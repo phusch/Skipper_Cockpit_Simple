@@ -1,4 +1,4 @@
-# Friesland Skipper Cockpit Simple V1.0.1 Test
+# Friesland Skipper Cockpit Simple V1.0.2 Test
 
 ## Neuer, strikt getrennter Ableger
 
@@ -7,7 +7,7 @@ Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise
 - Neue Hauptnavigation: **HEUTE | FAHREN | WETTER | MEHR**
 - **HEUTE** bündelt Tagesroute, Aktion, Nachtplatz, Wetter-Kurzstatus und relevante Tageskarten.
 - **PLAN ÄNDERN** verwendet für die tatsächlich aktive Navigationsroute ausschließlich die bereits vorhandene lokale Routenwahl.
-- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.1 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
+- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.2 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
 - Nachtplatz-Plan A/B/C/Reserve bleibt zunächst Informationslogik; es wird keine neue dauerhafte Auswahl eingeführt.
 - Technische Routenverwaltung bleibt vollständig vorhanden und liegt unter **FAHREN → ROUTE VERWALTEN**.
 - Die alte Sidebar bleibt im Quellbestand erhalten, wird in der Simple-Oberfläche aber ausgeblendet.
@@ -15,7 +15,7 @@ Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise
 - Der `.git`-Ordner der alten App wurde **nicht** in diesen Ableger übernommen. Für dieses Projekt muss ein neues GitHub-Repository verwendet werden.
 
 
-## Neu in V1.0.1 Test – manueller iCloud-Backuptransfer
+## Neu in V1.0.2 Test – manueller iCloud-Backuptransfer
 
 - **Keine automatische Synchronisation und kein Supabase.** Die App bleibt offline-first und speichert wie bisher lokal im Browser.
 - Unter **MEHR → DATEN & BACKUP** kann der gesamte relevante lokale App-Zustand als eine JSON-Datei exportiert werden.
@@ -25,7 +25,7 @@ Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise
 - Der Export umfasst die bestehenden `fsc_...`-Speicherdaten (u. a. Schiffsprofil, Routenwahl, importierte Waterkaarten-Alternativen, Tour-/Routeninfos, Bunkern und Runner-Caches). Interne Backup-Metadaten und die Rücksicherung selbst werden nicht mit exportiert.
 - Fest eingebaute Programmdateien, Standard-GPX, Routendaten, Wetter-/Nautiklogik und statische Reisedaten werden durch Export oder Import nicht verändert.
 
-## Bestandsschutz V1.0.1 Test
+## Bestandsschutz V1.0.2 Test
 
 Unverändert übernommen werden insbesondere alle Original-GPX, Routendaten, Tourinformationen, Runner-Daten, Nachtplatz-/Hafenmeisterdaten, Bunkerdaten, Bilder, bestehende Speicher-Schlüssel und die vorhandene Fachlogik.
 
@@ -369,3 +369,13 @@ Skipperbrief, Landgang, Nachtplätze und das Layout des Masters V0.13.2 bleiben 
 
 ## V0.19.1 – iPhone Hochformat
 Reiner Darstellungs-Fix für iPhone im Hochformat: kompakter Header und zweizeilige, horizontal wischbare Navigation. Skipper- und Runner-Funktionalität unverändert.
+
+
+## Neu in V1.0.2 Test – veröffentlichter Crew-Stand
+
+- `friesland-current.json` enthält den aktuell veröffentlichten Reise-/Bunker-Datenstand.
+- Auf einem wirklich neuen Gerät ohne vorhandene `fsc_`-Daten wird dieser Stand einmalig automatisch als Startstand geladen.
+- Bestehende lokale Daten werden beim normalen App-Start niemals automatisch überschrieben.
+- Über **CREW-STAND LADEN** kann der aktuelle GitHub-Stand bewusst geladen, geprüft und anschließend wie ein normaler Backup-Import übernommen werden.
+- Zum Aktualisieren des veröffentlichten Crew-Stands genügt es, im GitHub-Repository `friesland-current.json` durch ein neues, gültiges App-Backup zu ersetzen; der Dateiname bleibt gleich.
+- Die bestehende manuelle iCloud-Export-/Import-Funktion bleibt unverändert erhalten.

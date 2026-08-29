@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#f2f8f7",
   "theme_color": "#0b7285",
-  "description": "Friesland Skipper Cockpit Simple V1.0.1 Test – vereinfachte Bedienoberfläche auf der bewährten Skipper-Cockpit-Logik",
+  "description": "Friesland Skipper Cockpit Simple V1.0.2 Test – vereinfachte Bedienoberfläche auf der bewährten Skipper-Cockpit-Logik",
   "icons": [
     {
       "src": "assets/icons/skippercockpit-192.png",

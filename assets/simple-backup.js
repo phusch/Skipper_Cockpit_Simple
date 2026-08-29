@@ -1,14 +1,15 @@
-/* Friesland Skipper Cockpit Simple V1.0.1 Test
+/* Friesland Skipper Cockpit Simple V1.0.2 Test
    Manual JSON export/import layer for iCloud Drive / Files app.
    Existing app storage remains authoritative; no automatic synchronization. */
 (()=>{
   'use strict';
   const APP_NAME='Friesland Skipper Cockpit Simple';
-  const APP_VERSION='V1.0.1 Test';
+  const APP_VERSION='V1.0.2 Test';
   const SCHEMA='friesland-skipper-cockpit-backup';
   const SCHEMA_VERSION=1;
   const META_KEY='fsc_simple_backup_meta_v1';
   const ROLLBACK_KEY='fsc_simple_backup_rollback_v1';
+  const CURRENT_BACKUP_URL='friesland-current.json';
   const INTERNAL_KEYS=new Set([META_KEY,ROLLBACK_KEY]);
   let pendingBackup=null;
   let pendingFileName='';
@@ -160,6 +161,20 @@
       console.error('Backup validation failed',err);setStatus(`Import nicht möglich: ${err?.message||'ungültige JSON-Datei'}`,'error');ev.target.value='';
     }
   }
+  async function loadCrewCurrent(){
+    const btn=q('simpleBackupCrew');if(btn)btn.disabled=true;
+    try{
+      setStatus('Aktueller Crew-Stand wird von GitHub geladen …');
+      const response=await fetch(`${CURRENT_BACKUP_URL}?t=${Date.now()}`,{cache:'no-store'});
+      if(!response.ok)throw new Error(`HTTP ${response.status}`);
+      const data=validateBackup(await response.json());
+      openPreview(data,CURRENT_BACKUP_URL);
+      setStatus(`Crew-Stand geladen: ${humanDate(data.createdAt)} · vor Übernahme bitte prüfen.`,'ok');
+    }catch(err){
+      console.error('Crew current load failed',err);
+      setStatus(`Crew-Stand konnte nicht geladen werden: ${err?.message||'Netzwerkfehler'}`,'error');
+    }finally{if(btn)btn.disabled=false}
+  }
   function snapshotCurrent(){
     return {createdAt:isoNow(),storage:allManagedStorage()};
   }
@@ -199,10 +214,11 @@
     }catch(err){setStatus(`Rücksicherung fehlgeschlagen: ${err?.message||'Speicherfehler'}`,'error')}
   }
   function init(){
-    const exportBtn=q('simpleBackupExport'),importBtn=q('simpleBackupImport'),file=q('simpleBackupFile');
+    const exportBtn=q('simpleBackupExport'),importBtn=q('simpleBackupImport'),crewBtn=q('simpleBackupCrew'),file=q('simpleBackupFile');
     if(!exportBtn||!importBtn||!file)return;
     exportBtn.addEventListener('click',exportBackup);
     importBtn.addEventListener('click',()=>file.click());
+    crewBtn?.addEventListener('click',loadCrewCurrent);
     file.addEventListener('change',chooseImport);
     q('simpleImportClose')?.addEventListener('click',closePreview);
     q('simpleImportCancel')?.addEventListener('click',closePreview);
