@@ -1,10 +1,10 @@
-/* Friesland Skipper Cockpit Simple V1.0.2 Test
+/* Friesland Skipper Cockpit Simple V1.0.3 Test
    Manual JSON export/import layer for iCloud Drive / Files app.
    Existing app storage remains authoritative; no automatic synchronization. */
 (()=>{
   'use strict';
   const APP_NAME='Friesland Skipper Cockpit Simple';
-  const APP_VERSION='V1.0.2 Test';
+  const APP_VERSION='V1.0.3 Test';
   const SCHEMA='friesland-skipper-cockpit-backup';
   const SCHEMA_VERSION=1;
   const META_KEY='fsc_simple_backup_meta_v1';

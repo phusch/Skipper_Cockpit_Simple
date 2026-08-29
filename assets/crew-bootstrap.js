@@ -1,4 +1,4 @@
-/* Friesland Skipper Cockpit Simple V1.0.2 Test
+/* Friesland Skipper Cockpit Simple V1.0.3 Test
    Crew bootstrap: on a genuinely fresh browser profile, seed local app data once
    from friesland-current.json. Existing local app data is never overwritten. */
 (()=>{
