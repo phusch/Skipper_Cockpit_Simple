@@ -1,0 +1,103 @@
+{
+  "schema": "fsc-route-info-v1",
+  "routeFingerprint": "fsc-route-v1-3-558-33894-0d9138ad",
+  "day": 3,
+  "generatedAt": "2026-09-01T18:55:00Z",
+  "data": {
+    "title": "Workum → Bolsward → Sneek → SN15",
+    "subtitle": "Binnenroute ohne Heeg: über Trekfeart, Wymerts und Sneek zum Marrekrite-Ziel SN15.",
+    "routeText": "Von Workum geht es zunächst nordwärts über die Warkumer Trekfeart nach Bolsward. Anschließend folgt die Route ostwärts über die Wymerts/Wimerts durch den Raum Wolsum, Abbega und Oosthem nach IJlst. Von IJlst führt sie über De Geau weiter nach Sneek und anschließend über die östlichen Fahrwasser in Richtung Sneekermeer/Terherne bis zum Marrekrite-Ziel SN15 Adam/Lytse Griene. Die GPX-Alternative ist 33,894 km lang und mit 4 h 15 min Fahrzeit geplant. Heeg und das Heegermeer werden dabei nicht erneut angefahren.",
+    "night": "Plan A bleibt SN15 Adam/Lytse Griene als ruhiger Marrekrite-Naturplatz. Falls SN15 belegt oder bei den aktuellen Windverhältnissen ungünstig ist, bleiben Langweer, Sneekermeer und Sneek die vorgesehenen Reserven.",
+    "waters": [
+      "Workum",
+      "Warkumer Trekfeart / Workumertrekvaart",
+      "Bolsward",
+      "Wymerts / Wimerts",
+      "Wolsum",
+      "Abbega",
+      "Oosthem",
+      "IJlst",
+      "De Geau / Geeuw",
+      "Sneek",
+      "Houkesloot / östliche Sneeker Fahrwasser",
+      "Sneekermeer-Zone",
+      "Terherne / Lytse Griene",
+      "SN15 Adam"
+    ],
+    "passages": [
+      {
+        "level": "info",
+        "title": "Heeg wird vollständig ausgelassen",
+        "text": "Die Route führt von Workum über Bolsward, Wymerts, IJlst und Sneek. Heeg und die bereits befahrene Heegermeer-/Gaastmeer-Verbindung sind nicht Bestandteil dieser Alternative."
+      },
+      {
+        "level": "attention",
+        "title": "Workum – Bolsward: Brückenfolge einplanen",
+        "text": "Auf der Warkumer Trekfeart liegen mehrere bewegliche Brücken. Mit 4,15 m Höhe über Wasser ist die Artemis bei verschiedenen Bauwerken auf Öffnung angewiesen. Aktuelle Bedienzeiten und Störungen unmittelbar vor Abfahrt in Waterkaarten beziehungsweise bei Súdwest-Fryslân prüfen."
+      },
+      {
+        "level": "attention",
+        "title": "Bolsward – IJlst: Wymerts mit mehreren Brücken",
+        "text": "Die Verbindung über die Wymerts ist eine offizielle, auch für größere Freizeitschiffe geeignete Route, besitzt aber mehrere bewegliche Brücken. In den schmaleren Abschnitten bei Wolsum, Abbega und Oosthem defensiv fahren und Begegnungsverkehr frühzeitig berücksichtigen."
+      },
+      {
+        "level": "info",
+        "title": "IJlst und Sneek: günstigere Brückenbedienung",
+        "text": "Für IJlst und Sneek veröffentlicht die Gemeinde Súdwest-Fryslân im September eine Bedienung von 09:00 bis 19:00 Uhr. Damit entfallen dort die sonst üblichen Mittags- und Nachmittagspausen vieler kommunaler Brücken."
+      },
+      {
+        "level": "attention",
+        "title": "Übrige kommunale Brücken im September",
+        "text": "Für viele andere kommunale Brücken gelten im September grundsätzlich die Bedienfenster 09:00–12:00, 13:00–16:15 und 17:15–19:00 Uhr. In Workum werden die Brücken laut Gemeinde während der gesamten Fahrsaison abends bis 20:00 Uhr bedient. Einzelne Brücken können abweichende Regelungen oder Störungen haben."
+      },
+      {
+        "level": "attention",
+        "title": "Letzter Abschnitt Richtung SN15",
+        "text": "Nach Sneek wird die Route wieder offener. Auf Sneekermeer und den Zufahrten Richtung Terherne kann kräftiger Wind deutlich spürbar sein. Vor der letzten Querung Windrichtung, Wellenbild und tatsächliche Lage am Marrekrite-Platz prüfen."
+      }
+    ],
+    "landgang": [
+      "Bolsward eignet sich als Zwischenstopp für Kaffee, Versorgung oder einen kurzen Bummel durch das historische Zentrum. Bei knapper Zeit besser nur kurz anlegen, damit die Brückenfolge bis IJlst/Sneek nicht unnötig nach hinten rutscht.",
+      "IJlst bietet sich für einen kurzen, ruhigeren Zwischenstopp an; die historische Stadt liegt direkt an der Route. Für einen längeren Landgang ist Sneek die komfortablere Wahl.",
+      "Sneek ist die beste Versorgungsreserve vor dem Nachtplatz: Supermärkte, Gastronomie und weitere Infrastruktur sind vorhanden. Danach kann direkt zum Naturplatz SN15 weitergefahren werden."
+    ],
+    "nautic": {
+      "level": "attention",
+      "title": "Brückenreiche Binnenroute mit ruhigem Charakter",
+      "items": [
+        "Heeg und Heegermeer werden auf dieser Alternative nicht befahren.",
+        "Artemis: 12,30 m Länge, 3,85 m Breite, 1,15 m Tiefgang, 4,15 m Höhe über Wasser.",
+        "Workum–Bolsward sowie Bolsward–IJlst enthalten mehrere bewegliche Brücken; Öffnungen zeitlich mitplanen.",
+        "Für viele kommunale Brücken im September gelten 09:00–12:00, 13:00–16:15 und 17:15–19:00 Uhr.",
+        "IJlst und Sneek werden im September laut Gemeinde durchgehend von 09:00–19:00 Uhr bedient.",
+        "In Workum werden die Brücken während der gesamten Fahrsaison im Abendfenster bis 20:00 Uhr bedient.",
+        "In Wymerts und kleineren Kanalabschnitten Geschwindigkeit reduzieren und Begegnungen früh abstimmen.",
+        "Vor Sneek und besonders Richtung Sneekermeer/SN15 Wind und Wellen erneut beurteilen.",
+        "Aktuelle Waterkaarten- und Vaarweginformatie-Hinweise haben Vorrang vor dieser Planung."
+      ],
+      "official": "Maßgeblich sind die aktuelle Waterkaarten-Darstellung, Rijkswaterstaat Vaarweginformatie/FIS und die Brückeninformationen der Gemeente Súdwest-Fryslân. Die Gemeinde veröffentlicht für die Fahrsaison 2026 die genannten allgemeinen Bedienfenster; lokale Abweichungen, Störungen und temporäre Sperrungen sind vor Ort beziehungsweise unmittelbar vor der Passage zu prüfen."
+    },
+    "brief": {
+      "character": "Abwechslungsreiche Binnenroute ohne Wiederholung von Heeg: historische Städte, schmale friesische Wasserwege und am Ende ein Naturplatz.",
+      "summary": "Heute bewusst nicht wieder über Heeg: Von Workum zunächst über die Warkumer Trekfeart nach Bolsward, anschließend durch die Wymerts über Oosthem nach IJlst, weiter über De Geau nach Sneek und von dort zum Marrekrite-Ziel SN15. Die Strecke bleibt überwiegend geschützt; die Hauptaufgabe sind Brückenmanagement und konzentriertes Fahren in den engeren Binnenabschnitten.",
+      "reserve": "Bei größeren Verzögerungen den Landgang in Bolsward/IJlst verkürzen und Sneek als Versorgungsstopp priorisieren. Falls Wind oder Platzsituation SN15 unattraktiv machen, auf die bereits geplanten Nachtplatzreserven Langweer, Sneekermeer oder Sneek ausweichen.",
+      "focus": [
+        "Heeg vermeiden",
+        "Warkumer Trekfeart",
+        "Bolsward",
+        "Wymerts",
+        "IJlst",
+        "Sneek",
+        "Brückenzeiten",
+        "SN15"
+      ]
+    }
+  },
+  "sources": [
+    "https://sudwestfryslan.nl/onderwerp/bruggen-en-sluizen/",
+    "https://www.vaarweginformatie.nl/frp/page/downloads",
+    "https://www.friesland.nl/de/routen/1174780273/sudwestrunde",
+    "https://www.friesland.nl/en/routes/1174780273/southwest-round-trip",
+    "https://www.friesland.nl/nl/routes/1173308402/vaarroute-langs-watericonen"
+  ]
+}
