@@ -1,6 +1,8 @@
-# Friesland Skipper Cockpit Simple V1.0.4 Test
+# Friesland Skipper Cockpit Simple V1.0.4 Final
 
-## Neu in V1.0.4 Test – gefahrene Tour und Tag 9
+**Verbindlicher Stand:** Diese V1.0.4 Final ist zugleich die abgeschlossene Endversion der Friesland-Tour 2026 und die stabile MASTER-/Weiterarbeitungsbasis. Spätere Änderungen müssen auf genau dieser Version aufbauen, sofern nicht ausdrücklich eine neuere Basis festgelegt wird.
+
+## V1.0.4 Final – gefahrene Tour und Tag 9
 
 - Der veröffentlichte Stand in `friesland-current.json` enthält die tatsächlich während der Tour gewählten Original- und Alternativrouten.
 - Ein neuer veröffentlichter Routenstand wird beim Öffnen einmalig übernommen. Auf einem bestehenden Gerät werden dabei ausschließlich Routenwahl, Alternativrouten und zugehörige Routeninformationen aktualisiert; Bunkern, Runner und andere lokale Arbeitsdaten bleiben erhalten.
@@ -12,12 +14,12 @@ Hinweis: Die Fahrtagauswahl folgt der Reisedokumentation **1–7 und 9**. Ein Ta
 
 ## Neuer, strikt getrennter Ableger
 
-Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise-App. Sie verwendet eine neue Bedienoberfläche, übernimmt aber bewusst die bestehende technische Logik für Routen, GPX, Waterkaarten, GPS, Wetter, Nautik, Runner, Tagesinformationen, Landgang, Nachtplätze/Hafenmeister, Bunkern, Speicherung, Einstellungen, Schiffsprofil, Hilfe und Routenverwaltung.
+Diese Version ist der **separate finale Simple-Ableger** der funktionierenden V0.19.x-Reise-App. Sie verwendet eine neue Bedienoberfläche, übernimmt aber bewusst die bestehende technische Logik für Routen, GPX, Waterkaarten, GPS, Wetter, Nautik, Runner, Tagesinformationen, Landgang, Nachtplätze/Hafenmeister, Bunkern, Speicherung, Einstellungen, Schiffsprofil, Hilfe und Routenverwaltung.
 
 - Neue Hauptnavigation: **HEUTE | FAHREN | WETTER | MEHR**
 - **HEUTE** bündelt Tagesroute, Aktion, Nachtplatz, Wetter-Kurzstatus und relevante Tageskarten.
 - **PLAN ÄNDERN** verwendet für die tatsächlich aktive Navigationsroute ausschließlich die bereits vorhandene lokale Routenwahl.
-- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.4 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
+- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.4 ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
 - Nachtplatz-Plan A/B/C/Reserve bleibt zunächst Informationslogik; es wird keine neue dauerhafte Auswahl eingeführt.
 - Technische Routenverwaltung bleibt vollständig vorhanden und liegt unter **FAHREN → ROUTE VERWALTEN**.
 - Die alte Sidebar bleibt im Quellbestand erhalten, wird in der Simple-Oberfläche aber ausgeblendet.

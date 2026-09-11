@@ -1,7 +1,7 @@
-/* Friesland Skipper Cockpit Simple V1.0.4 Test
+/* Friesland Skipper Cockpit Simple V1.0.4
    Additive navigation/presentation layer. No new persistence schema. */
 (()=>{
-  const VERSION='V1.0.4 Test';
+  const VERSION='V1.0.4';
   let simpleMain='today';
   const q=id=>document.getElementById(id);
   const escSimple=value=>String(value??'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));

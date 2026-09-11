@@ -1,4 +1,4 @@
-/* Friesland Skipper Cockpit Simple V1.0.4 Test
+/* Friesland Skipper Cockpit Simple V1.0.4
    Published tour state: seed a fresh browser completely; on an existing browser
    apply each published route snapshot once without overwriting other local data. */
 (()=>{

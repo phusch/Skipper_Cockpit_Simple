@@ -1,4 +1,4 @@
-/* Friesland Skipper Cockpit Simple V1.0.4 Test
+/* Friesland Skipper Cockpit Simple V1.0.4
    Additive archive route: actual return trip on tour day 9. */
 (()=>{
   'use strict';
