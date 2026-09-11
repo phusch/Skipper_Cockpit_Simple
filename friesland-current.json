@@ -1,9 +1,10 @@
 {
   "schema": "friesland-skipper-cockpit-backup",
   "schemaVersion": 1,
+  "publishedStateVersion": "2026-friesland-final-v1",
   "app": {
     "name": "Friesland Skipper Cockpit Simple",
-    "version": "V1.0.3 Test"
+    "version": "V1.0.4 Test"
   },
   "createdAt": "2026-09-11T12:21:05.500Z",
   "currentDay": 7,

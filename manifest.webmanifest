@@ -5,7 +5,7 @@
   "display": "standalone",
   "background_color": "#f2f8f7",
   "theme_color": "#0b7285",
-  "description": "Friesland Skipper Cockpit Simple V1.0.3 Test – vereinfachte Bedienoberfläche auf der bewährten Skipper-Cockpit-Logik",
+  "description": "Friesland Skipper Cockpit Simple V1.0.4 Test – gefahrene Tour mit veröffentlichtem Routenstand und Tag 9",
   "icons": [
     {
       "src": "assets/icons/skippercockpit-192.png",

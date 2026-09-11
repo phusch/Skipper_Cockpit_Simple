@@ -1,4 +1,14 @@
-# Friesland Skipper Cockpit Simple V1.0.3 Test
+# Friesland Skipper Cockpit Simple V1.0.4 Test
+
+## Neu in V1.0.4 Test – gefahrene Tour und Tag 9
+
+- Der veröffentlichte Stand in `friesland-current.json` enthält die tatsächlich während der Tour gewählten Original- und Alternativrouten.
+- Ein neuer veröffentlichter Routenstand wird beim Öffnen einmalig übernommen. Auf einem bestehenden Gerät werden dabei ausschließlich Routenwahl, Alternativrouten und zugehörige Routeninformationen aktualisiert; Bunkern, Runner und andere lokale Arbeitsdaten bleiben erhalten.
+- **Tag 9 · Lytse Griene → Sneek** dokumentiert die tatsächlich gefahrene Rückfahrt zur Schiffsabgabe mit 12,1 km und 96 GPX-Punkten.
+- Die neue T9-Datenbasis liegt additiv in `assets/route-t9-data.js`; die sieben bisherigen Standardrouten und ihre GPX-Dateien bleiben unverändert.
+- Die hochgeladene T9-GPX liegt unverändert als `routes/T9 Lytse Griene - Sneek.gpx` bei.
+
+Hinweis: Die Fahrtagauswahl folgt der Reisedokumentation **1–7 und 9**. Ein Tag 8 wird nicht erfunden, weil dafür keine Route bereitgestellt wurde.
 
 ## Neuer, strikt getrennter Ableger
 
@@ -7,11 +17,11 @@ Diese Version ist eine **separate Testkopie** der funktionierenden V0.19.x-Reise
 - Neue Hauptnavigation: **HEUTE | FAHREN | WETTER | MEHR**
 - **HEUTE** bündelt Tagesroute, Aktion, Nachtplatz, Wetter-Kurzstatus und relevante Tageskarten.
 - **PLAN ÄNDERN** verwendet für die tatsächlich aktive Navigationsroute ausschließlich die bereits vorhandene lokale Routenwahl.
-- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.3 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
+- Bestehende optische Tagesentscheidungen (z. B. PLAN A/B oder RECHTZEITIG/SPÄT) bleiben in V1.0.4 Test ausdrücklich **nicht** mit einer GPX gekoppelt und erhalten keine neue Speicherlogik.
 - Nachtplatz-Plan A/B/C/Reserve bleibt zunächst Informationslogik; es wird keine neue dauerhafte Auswahl eingeführt.
 - Technische Routenverwaltung bleibt vollständig vorhanden und liegt unter **FAHREN → ROUTE VERWALTEN**.
 - Die alte Sidebar bleibt im Quellbestand erhalten, wird in der Simple-Oberfläche aber ausgeblendet.
-- `assets/app.js` und `assets/app.css` der Ausgangsbasis bleiben unverändert. Die neue Oberfläche wird additiv durch `assets/simple-ui.js` und `assets/simple-ui.css` ergänzt.
+- `assets/app.css` und die bestehende Fachlogik bleiben erhalten. In `assets/app.js` wurde für V1.0.4 ausschließlich die sichtbare Fahrtagsfolge um Tag 9 ergänzt; die neue Oberfläche bleibt in `assets/simple-ui.js` und `assets/simple-ui.css` getrennt.
 - Der `.git`-Ordner der alten App wurde **nicht** in diesen Ableger übernommen. Für dieses Projekt muss ein neues GitHub-Repository verwendet werden.
 
 

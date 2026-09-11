@@ -1,5 +1,5 @@
-/* Friesland Skipper Cockpit Simple V1.0.3 Test
-   Additive UI layer only. Existing app.css/app.js logic remains untouched. */
+/* Friesland Skipper Cockpit Simple V1.0.4 Test
+   Additive UI layer; V1.0.4 also exposes the additional tour day 9. */
 .simple-app-marker{display:none}
 body{padding-bottom:88px}
 .sidebar{display:none!important}
@@ -7,6 +7,7 @@ body{padding-bottom:88px}
 .content{grid-column:1!important;max-width:1500px;width:100%;margin:0 auto;padding-bottom:110px}
 .menuBtn{display:none!important}
 .detailDayNav{display:none!important}
+.headerDayMenu{max-height:calc(100vh - 82px);overflow-y:auto}
 .simpleTodayHead{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px}
 .simplePlanHero{background:linear-gradient(145deg,#0b365d,#0a7187);color:#fff;border-radius:22px;padding:20px;box-shadow:0 14px 34px rgba(18,63,89,.16)}
 .simpleSectionLabel{font-size:.7rem;font-weight:950;letter-spacing:.1em;color:#a9edf0;margin-bottom:12px}

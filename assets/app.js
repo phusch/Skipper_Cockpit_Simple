@@ -5,6 +5,7 @@ const WEATHER_CODES={
   61:["🌦️","Leichter Regen"],63:["🌧️","Regen"],65:["🌧️","Starker Regen"],80:["🌦️","Regenschauer"],81:["🌧️","Schauer"],82:["⛈️","Starke Schauer"],
   95:["⛈️","Gewitter"],96:["⛈️","Gewitter mit Hagel"],99:["⛈️","Starkes Gewitter"]
 };
+const FSC_DAY_SEQUENCE=[1,2,3,4,5,6,7,9];
 let lastWeather=null;
 function routeWeatherPoint(day){
   const d=getActiveRoute(day),pts=d.points;
@@ -352,7 +353,7 @@ function passageParts(p){
   if(p&&typeof p==='object')return {level:p.level||'info',title:p.title||'',text:p.text||''};
   return {level:'info',title:'Hinweis',text:typeof p==='string'?p:''};
 }
-function renderDay(day){currentDay=Number(day);const d=getActiveRoute(day);updateRouteManager(day,d);renderAlternativeBasis(d);renderTourInfoManager(d);dayKicker.textContent=`TAG ${day} · ${d.date}`;routeTitle.textContent=d.title;subtitle.textContent=d.subtitle;topDay.textContent=`${day} / 7`;topTime.textContent=d.plan_time;topKm.textContent=`${d.km.toFixed(1)} km`;metricKm.textContent=`${d.km.toFixed(1)} km`;metricTime.textContent=d.plan_time;metricPts.textContent=d.count;routeText.textContent=d.route_text;nightText.textContent=d.night;watersText.textContent=(d.waters||[]).join(' · ');
+function renderDay(day){currentDay=Number(day);const d=getActiveRoute(day);updateRouteManager(day,d);renderAlternativeBasis(d);renderTourInfoManager(d);dayKicker.textContent=`TAG ${day} · ${d.date}`;routeTitle.textContent=d.title;subtitle.textContent=d.subtitle;topDay.textContent=`${day} / 9`;topTime.textContent=d.plan_time;topKm.textContent=`${d.km.toFixed(1)} km`;metricKm.textContent=`${d.km.toFixed(1)} km`;metricTime.textContent=d.plan_time;metricPts.textContent=d.count;routeText.textContent=d.route_text;nightText.textContent=d.night;watersText.textContent=(d.waters||[]).join(' · ');
 skipperPassages.innerHTML=(d.passages||[]).map(p=>{const item=passageParts(p);return `<div class="passage ${esc(item.level)}"><strong>${esc(item.title)}</strong>${esc(item.text)}</div>`}).join('');
 landgangList.innerHTML=(d.landgang||[]).map(x=>`<li>⚓ ${esc(x)}</li>`).join('');
 if(d.nautic){
@@ -423,7 +424,7 @@ function landgangParts(text,index){
 }
 function renderDetailDayNav(targetId){
   const el=document.getElementById(targetId);if(!el)return;
-  el.innerHTML=Array.from({length:7},(_,i)=>{const day=i+1,d=getActiveRoute(day);return `<button type="button" data-detail-day="${day}" class="${day===currentDay?'active':''}"><strong>TAG ${day}</strong><span>${esc(d.title)}</span></button>`}).join("");
+  el.innerHTML=FSC_DAY_SEQUENCE.map(day=>{const d=getActiveRoute(day);return `<button type="button" data-detail-day="${day}" class="${day===currentDay?'active':''}"><strong>TAG ${day}</strong><span>${esc(d.title)}</span></button>`}).join("");
   el.querySelectorAll("[data-detail-day]").forEach(button=>button.addEventListener("click",()=>renderDay(Number(button.dataset.detailDay))));
 }
 function renderTagesplanDetail(){
@@ -598,7 +599,7 @@ async function scanNauticalRoute(){
 
 
 function syncHeaderDayPicker(day){
-  const labels={1:"Sneek",2:"Gaastmaar",3:"Workum",4:"SN15",5:"Marchjepolle",6:"Giethoorn",7:"Sloten"};
+  const labels={1:"Sneek",2:"Gaastmaar",3:"Workum",4:"SN15",5:"Marchjepolle",6:"Giethoorn",7:"Sloten",9:"Lytse Griene"};
   headerDayLabel.textContent=`Tag ${day} · ${labels[day]||""}`;
   document.querySelectorAll("[data-header-day]").forEach(b=>b.classList.toggle("active",Number(b.dataset.headerDay)===Number(day)));
 }
