@@ -1,4 +1,4 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b7285"><title>Friesland Skipper Cockpit Simple V1.0.4</title><meta name="description" content="Friesland Skipper Cockpit Simple – vereinfachte Bedienoberfläche auf bewährter Skipper-Cockpit-Logik"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/icons/skippercockpit-192.png"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="assets/app.css?v=1.0.4"><link rel="stylesheet" href="assets/simple-ui.css?v=1.0.4"><link rel="stylesheet" href="assets/simple-backup.css?v=1.0.4"><style id="v0141-critical">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#0b7285"><title>Friesland Skipper Cockpit Simple V1.0.5 Test</title><meta name="description" content="Friesland Skipper Cockpit Simple – vereinfachte Bedienoberfläche auf bewährter Skipper-Cockpit-Logik"><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="192x192" href="assets/icons/skippercockpit-192.png"><link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"><link rel="stylesheet" href="assets/app.css?v=1.0.4"><link rel="stylesheet" href="assets/simple-ui.css?v=1.0.4"><link rel="stylesheet" href="assets/simple-backup.css?v=1.0.4"><link rel="stylesheet" href="assets/huschel-skipper-speicher.css?v=1.0.5"><style id="v0141-critical">
 .topDayBar,.daypicker{display:none!important}
 </style></head>
 <body><div class="shell"><header class="topbar"><div class="brand"><img src="assets/schiffsschraube-gold.gif?v=1.0.4" alt="Goldene Schiffsschraube"><div><h1>FRIESLAND</h1><span>SKIPPER COCKPIT SIMPLE</span></div></div><div class="statusbar"><div class="statusitem headerDayPicker" id="headerDayPicker">
@@ -18,7 +18,7 @@
     <button data-header-day="7">Tag 7 <span>Sloten</span></button>
     <button data-header-day="9">Tag 9 <span>Lytse Griene</span></button>
   </div>
-</div><div class="statusitem"><div class="statusicon">🌤️</div><div><small>Wetter</small><strong id="topWeather">—</strong></div></div><div class="statusitem"><div class="statusicon">💨</div><div><small>Wind</small><strong id="topWind">—</strong></div></div><div class="statusitem"><div class="statusicon">🕒</div><div><small>Fahrzeit</small><strong id="topTime">—</strong></div></div><div class="statusitem"><div class="statusicon">〰️</div><div><small>Distanz</small><strong id="topKm">—</strong></div></div></div><div class="versionBadge">V1.0.4</div><button class="menuBtn" aria-label="Menü">☰</button></header><div class="topDayBar"><span>FAHRTAG</span><div class="topDayButtons">
+</div><div class="statusitem"><div class="statusicon">🌤️</div><div><small>Wetter</small><strong id="topWeather">—</strong></div></div><div class="statusitem"><div class="statusicon">💨</div><div><small>Wind</small><strong id="topWind">—</strong></div></div><div class="statusitem"><div class="statusicon">🕒</div><div><small>Fahrzeit</small><strong id="topTime">—</strong></div></div><div class="statusitem"><div class="statusicon">〰️</div><div><small>Distanz</small><strong id="topKm">—</strong></div></div></div><div class="versionBadge">V1.0.5</div><button type="button" id="hsOpen" class="hs-open" aria-label="Speichern und Backup öffnen" title="Huschel App Speicher">⇧</button><button class="menuBtn" aria-label="Menü">☰</button></header><div class="topDayBar"><span>FAHRTAG</span><div class="topDayButtons">
 <button data-top-day="1" class="topDayBtn active">Tag 1</button><button data-top-day="2" class="topDayBtn">Tag 2</button>
 <button data-top-day="3" class="topDayBtn">Tag 3</button><button data-top-day="4" class="topDayBtn">Tag 4</button>
 <button data-top-day="5" class="topDayBtn">Tag 5</button><button data-top-day="6" class="topDayBtn">Tag 6</button>
@@ -464,10 +464,42 @@
 </div>
 </main></div>
 
+<section id="hsView" class="hs-view" aria-label="Huschel App Speicher" hidden>
+ <div class="hs-inner">
+  <div class="hs-head"><button type="button" id="hsBack" class="hs-back">‹ Zurück</button><div><h2>Speichern &amp; Backup</h2><p>Skipper Cockpit Simple · privater Huschel App Speicher</p></div></div>
+  <div id="hsLamp" class="hs-lamp" role="status" aria-live="polite">🟡 GitHub-Speicherstand noch nicht geprüft</div>
+  <div id="hsMeta" class="hs-meta">Revision: noch nicht geprüft · Letzte Speicherung: –</div>
+  <section id="hsAuthPanel" class="hs-panel hs-auth"><h3>Supabase-Anmeldung</h3>
+   <div id="hsAuthStatus" class="hs-auth-status" role="status" aria-live="polite">⚪ Nicht angemeldet</div>
+   <div id="hsAuthInputs"><label for="hsKey">Publishable Key</label><input id="hsKey" type="text" placeholder="sb_publishable_…" autocomplete="off" spellcheck="false">
+   <label for="hsEmail">E-Mail</label><input id="hsEmail" type="email" value="huschka@eventdesign.com" autocomplete="username">
+   <label for="hsPass">Passwort</label><input id="hsPass" type="password" autocomplete="current-password">
+   <button type="button" id="hsLogin" class="hs-btn hs-primary">Anmelden</button></div>
+   <div id="hsSigned" hidden><p id="hsSignedEmail"></p><button type="button" id="hsLogout" class="hs-btn hs-muted">Abmelden</button></div>
+  </section>
+  <section class="hs-panel hs-cloud"><h3>GitHub · bevorzugter Speicher</h3>
+   <button type="button" id="hsGithubSave" class="hs-btn hs-primary">☁️ GitHub Speichern</button>
+   <button type="button" id="hsGithubLoad" class="hs-btn hs-secondary">⇩ GitHub Laden</button>
+   <p>Privates Repository <code>huschel-app-data/skipper-cockpit-simple/data.json</code>. Ein älterer Stand überschreibt neuere Daten nicht unbemerkt.</p>
+  </section>
+  <section class="hs-panel"><h3>Lokaler Speicher</h3><div class="hs-two">
+   <button type="button" id="hsLocalSave" class="hs-btn hs-muted">Lokal speichern</button>
+   <button type="button" id="hsLocalLoad" class="hs-btn hs-muted">Lokal laden</button></div>
+   <p>Zusätzlicher manueller Schnappschuss. Die vorhandene automatische lokale Speicherung bleibt unverändert aktiv.</p>
+  </section>
+  <section class="hs-panel"><h3>JSON-Backup</h3><div class="hs-two">
+   <button type="button" id="hsExport" class="hs-btn hs-muted">JSON erstellen</button>
+   <button type="button" id="hsImport" class="hs-btn hs-muted">JSON laden</button>
+  </div><input type="file" id="hsFile" accept=".json,application/json" hidden>
+  <p>Enthält die bestehenden Fahrtags-/Routenauswahlen, importierte GPX-Alternativen, Schiffsprofil, Bunkern und Runner-Speicherdaten – keine fest eingebauten App-Dateien.</p></section>
+  <div id="hsMessage" class="hs-message" role="status" aria-live="polite">Zuerst anmelden und GitHub Laden wählen, um den aktuellen Revisionsstand zu prüfen.</div>
+  <p class="hs-note">Die bisherigen iCloud-Backups und „Crew-Stand laden“ unter MEHR bleiben als eigenständige Funktionen erhalten. Es erfolgt keine automatische GitHub-Synchronisation.</p>
+ </div>
+</section>
 <nav class="simpleBottomNav" aria-label="Hauptnavigation">
   <button type="button" class="active" data-simple-main="today"><span>☀️</span><strong>HEUTE</strong></button>
   <button type="button" data-simple-main="drive"><span>🗺</span><strong>FAHREN</strong></button>
   <button type="button" data-simple-main="weather"><span>🌦</span><strong>WETTER</strong></button>
   <button type="button" data-simple-main="more"><span>•••</span><strong>MEHR</strong></button>
 </nav>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="assets/routes-data.js?v=1.0.4"></script><script src="assets/route-t9-data.js?v=1.0.4"></script><script src="assets/tour-info-data.js?v=1.0.4"></script><script src="assets/night-info-data.js?v=1.0.4"></script><script src="assets/day-place-links.js?v=1.0.4"></script><script src="assets/bunkering-data.js?v=1.0.4"></script><script src="assets/berth-plans-data.js?v=1.0.4"></script><script src="assets/crew-default-data.js?v=1.0.4"></script><script src="assets/crew-bootstrap.js?v=1.0.4"></script><script src="assets/app.js?v=1.0.4"></script><script src="assets/bunkering.js?v=1.0.4"></script><script src="assets/runner-data.js?v=1.0.4"></script><script src="assets/runner.js?v=1.0.4"></script><script src="assets/simple-ui.js?v=1.0.4"></script><script src="assets/simple-backup.js?v=1.0.4"></script></body></html>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script><script src="assets/routes-data.js?v=1.0.4"></script><script src="assets/route-t9-data.js?v=1.0.4"></script><script src="assets/tour-info-data.js?v=1.0.4"></script><script src="assets/night-info-data.js?v=1.0.4"></script><script src="assets/day-place-links.js?v=1.0.4"></script><script src="assets/bunkering-data.js?v=1.0.4"></script><script src="assets/berth-plans-data.js?v=1.0.4"></script><script src="assets/crew-default-data.js?v=1.0.4"></script><script src="assets/crew-bootstrap.js?v=1.0.4"></script><script src="assets/app.js?v=1.0.4"></script><script src="assets/bunkering.js?v=1.0.4"></script><script src="assets/runner-data.js?v=1.0.4"></script><script src="assets/runner.js?v=1.0.4"></script><script src="assets/simple-ui.js?v=1.0.4"></script><script src="assets/simple-backup.js?v=1.0.4"></script><script type="module" src="assets/huschel-skipper-speicher.js?v=1.0.5"></script></body></html>
