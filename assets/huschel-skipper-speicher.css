@@ -1,6 +1,7 @@
 /* Additive styles only. Does not change the original Simple UI or specialist screens. */
-.hs-open{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:40px;height:40px;margin:0 9px 0 2px;border-radius:12px;border:1px solid rgba(255,255,255,.38);background:rgba(255,255,255,.11);color:#fff;font-size:25px;line-height:1;font-weight:850;cursor:pointer}
-.hs-open:hover,.hs-open:focus-visible{background:rgba(255,255,255,.26);outline:2px solid rgba(255,255,255,.25)}
+.hs-open{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:42px;height:42px;margin:0 9px 0 2px;border-radius:12px;border:1px solid #83b9c7;background:#e1f2f6;color:#0a4764;box-shadow:0 2px 8px rgba(11,53,77,.12);line-height:1;cursor:pointer}
+.hs-open:hover,.hs-open:focus-visible{background:#cae9ef;outline:2px solid #147d93;outline-offset:2px}
+.hs-open svg{display:block;width:23px;height:23px;pointer-events:none}
 body.hs-open-page{background:#eff3f4!important;padding:0!important}
 body.hs-open-page>.shell,body.hs-open-page>.simpleBottomNav{display:none!important}
 .hs-view[hidden],.hs-view [hidden]{display:none!important}
@@ -33,5 +34,18 @@ body.hs-open-page>.shell,body.hs-open-page>.simpleBottomNav{display:none!importa
 .hs-panel input:not([type=file]){width:100%;min-width:0;margin-top:5px;padding:12px;border-radius:9px;border:1px solid #bfcfd8;font:inherit;color:#223f50;background:#fff;font-size:16px}
 .hs-message{white-space:pre-wrap;overflow-wrap:anywhere;border-left:4px solid #88a9bd;background:#fff;border-radius:0 10px 10px 0;padding:13px 15px;font-size:13px;line-height:1.55;color:#345c70;margin:18px 0}
 .hs-note{color:#647885;font-size:12px;line-height:1.5}
-@media(max-width:700px){body.simple-ui .topbar{grid-template-columns:minmax(94px,1fr) auto auto auto!important}.hs-open{width:36px;height:36px;margin:0 7px 0 0;font-size:22px}.hs-view{padding:15px 10px 35px}.hs-head{gap:9px}.hs-head h2{font-size:21px}.hs-back{padding:10px 11px;font-size:14px}.hs-lamp{padding:16px 14px;font-size:17px}.hs-panel{padding:15px}.hs-two .hs-btn{padding:12px 7px;font-size:14px}}
+@media(max-width:700px){body.simple-ui .topbar{grid-template-columns:minmax(94px,1fr) auto auto auto!important}.hs-open{width:38px;height:38px;margin:0 7px 0 0}.hs-view{padding:15px 10px 35px}.hs-head{gap:9px}.hs-head h2{font-size:21px}.hs-back{padding:10px 11px;font-size:14px}.hs-lamp{padding:16px 14px;font-size:17px}.hs-panel{padding:15px}.hs-two .hs-btn{padding:12px 7px;font-size:14px}}
 @media print{.hs-open,.hs-view{display:none!important}}
+
+/* V1.0.5.1: keep the new button visible even on narrow iPhones. */
+@media(max-width:360px){body.simple-ui .topbar .versionBadge{display:none!important}}
+
+/* Header has five status fields but no room for the extra storage button on tablets.
+   Preserve the date selector and all underlying app functions. */
+@media(min-width:701px) and (max-width:1050px){
+  body.simple-ui .topbar{grid-template-columns:minmax(220px,1fr) minmax(130px,175px) auto 52px!important}
+  body.simple-ui .topbar .statusbar{display:flex!important;min-width:0;overflow:hidden}
+  body.simple-ui .topbar .statusbar .statusitem:not(.headerDayPicker){display:none!important}
+  body.simple-ui .topbar .statusbar .headerDayPicker{display:flex!important;min-width:0;padding:0 5px!important}
+  body.simple-ui .topbar .headerDayCurrent{min-width:0;max-width:165px}
+}
